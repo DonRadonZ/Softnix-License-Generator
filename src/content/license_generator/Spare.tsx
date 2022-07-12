@@ -5,10 +5,12 @@ import {Grid, FormGroup, FormHelperText, Box, Typography } from '@mui/material';
 import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
 import { object, string, TypeOf, boolean, date, number } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import InputLabel from '@mui/material/InputLabel';
 import { FC } from 'react';
 
 import { Theme,useTheme } from '@mui/material/styles';
 
+import parse from "date-fns/parse";
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -64,6 +66,8 @@ type TypeSelect = TypeOf<typeof TypeSchema>;
    type StorageSelect = TypeOf<typeof StorageSchema>; 
 
   // Storage Data
+  
+
   const storageChoose:StorageSelect[] = [
     {label:"20 GB", value:"20 GB"},
     {label:"50 GB", value:"50 GB"},
@@ -87,8 +91,8 @@ type TypeSelect = TypeOf<typeof TypeSchema>;
     activate: string().nonempty('required to generate'),
     serial_type: string().nonempty('required to generate'),
     type: TypeSchema.array().max(1, { message: "Please pick for generate" }),
-    dashboard: number(),
-    visualization: number(),
+    dashboard: string().nonempty('required to generate'),
+    visualization: string().nonempty('required to generate'),
     storage: StorageSchema.array().max(1, { message: "Please pick for generate" }),
     expired: date(),
     multi: boolean( {
@@ -107,16 +111,18 @@ const defaultValues: GenerateInput = {
   activate: "",
   serial_type: "",
   type: [],
-  dashboard: 0,
-  visualization: 0,
+  dashboard: "",
+  visualization: "",
   storage: [],
   expired: new Date(),
   multi: true};
 
-  function getTypeStyles(name: string, typeName: readonly string[], theme: Theme) {
+
+
+  function getTypeStyles(name: string, TypeChoose: string[], theme: Theme) {
     return {
       fontWeight:
-        typeName.indexOf(name) === -1
+      TypeChoose.indexOf(name) === -1
           ? theme.typography.fontWeightRegular
           : theme.typography.fontWeightMedium,
     };
@@ -124,10 +130,10 @@ const defaultValues: GenerateInput = {
 
 
   // Storage Part
-  function getStorageStyles(name: string, Storage: readonly string[], theme: Theme) {
+  function getStorageStyles(name: string, StorageChoose: string[], theme: Theme) {
     return {
       fontWeight:
-        Storage.indexOf(name) === -1
+      StorageChoose.indexOf(name) === -1
           ? theme.typography.fontWeightRegular
           : theme.typography.fontWeightMedium,
     };
@@ -176,13 +182,13 @@ const GeneratePage:FC = () => {
      
     }
     
-    const controlProps = (item: string) => ({
-    checked: value === item,
-    onChange: handleChange,
-    value: item,
-    name: 'color-radio-button-demo',
-    inputProps: { 'aria-label': item },
-    });
+    // const controlProps = (item: string) => ({
+    // checked: value === item,
+    // onChange: handleChange,
+    // value: item,
+    // name: 'color-radio-button-demo',
+    // inputProps: { 'aria-label': item },
+    // });
 
 
    
@@ -267,26 +273,25 @@ const GeneratePage:FC = () => {
                />
 
       <FormControl sx={{ mb: 2, width: 300 }}>
+      <InputLabel id="demo-multiple-name-label">Type</InputLabel>
         <Select
-          name = 'type'
+          {...register("type", { required: true, maxLength: 20 })}
           required
           displayEmpty
           value={TypeChoose}
           onChange={TypehandleChange}
-          input={<OutlinedInput />}
-          renderValue={(selected) => {
-            if (selected.length === 0) {
-              return <em>Type</em>;
-            }
-
-            return selected.join();
-          }}
+          input={<OutlinedInput label="Type"/>}
           MenuProps={MenuProps}
           inputProps={{ 'aria-label': 'Without label' }}
         >
-          <MenuItem disabled value="">
-            <em>Type</em>
+          {typeChoose.map(({label,value}) => (
+          <MenuItem 
+            key={label}
+            value={value}
+            style={getTypeStyles(value,TypeChoose,theme)}>
+            {value}
           </MenuItem>
+          ))}
         </Select>
       </FormControl>
 
@@ -307,30 +312,28 @@ const GeneratePage:FC = () => {
                />
             
 
-            <FormControl sx={{ mb: 2, width: 300 }}>
-
-
+        <FormControl sx={{ mb: 2, width: 300 }}>
+        <InputLabel id="storage">Storage</InputLabel>
         <Select
-          name = "storage"
+          {...register("storage", { required: true, maxLength: 20 })}
           displayEmpty
           required
           value={StorageChoose}
           onChange={StoragehandleChange}
-          input={<OutlinedInput />}
-          renderValue={(selected) => {
-            if (selected.length === 0) {
-              return <em>Storage</em>;
-            }
-
-            return selected.join();
-          }}
+          input={<OutlinedInput label="Storage"/>}
           MenuProps={MenuProps}
           inputProps={{ 'aria-label': 'Without label' }}
         >
-          <MenuItem disabled value="">
-            <em>Storage</em>
+           {storageChoose.map(({label,value}) => (
+          <MenuItem 
+            key={label}
+            value={value}
+            style={getStorageStyles(value, StorageChoose,theme)}>
+            {value}
           </MenuItem>
+          ))}
         </Select>
+        
       </FormControl>
 
 
@@ -338,7 +341,7 @@ const GeneratePage:FC = () => {
         <FormControl sx={{ mb: 2, width: 300 }}>
     <Stack component="form" noValidate spacing={3}>
       <TextField
-        id="datetime-local"
+        id="expired"
         label="Expired Date"
         type="datetime-local"
         sx={{ width: 250 }}
@@ -346,7 +349,12 @@ const GeneratePage:FC = () => {
           shrink: true,
         }}
       />
+
+            <FormHelperText error={!!errors['expired']}>
+                {errors['expired'] ? errors['expired'].message : 'Require for Generate'}
+              </FormHelperText>
             </Stack>
+           
             </FormControl>
             
 
@@ -408,3 +416,4 @@ const GeneratePage:FC = () => {
   };
 
 export default GeneratePage;
+
