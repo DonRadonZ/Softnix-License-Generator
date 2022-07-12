@@ -10,11 +10,12 @@ import { FC } from 'react';
 
 import { Theme,useTheme } from '@mui/material/styles';
 
-import parse from "date-fns/parse";
+
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import RadioGroup from '@mui/material/RadioGroup';
 import Radio from '@mui/material/Radio';
+import Button from '@mui/material/Button';
 import LoadingButton from '@mui/lab/LoadingButton';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import RequestInput from '../../component/requestinput/RequestInput';
@@ -191,9 +192,7 @@ const GeneratePage:FC = () => {
     // });
 
 
-   
 
-    const [loading, setLoading] = useState(false);
 
    
 
@@ -403,15 +402,14 @@ const GeneratePage:FC = () => {
                 </FormHelperText>
              </RadioGroup>
               </FormGroup>
-              <LoadingButton
+              <Button
                 variant='contained'
                 fullWidth
                 type='submit'
-                loading={loading}
                 sx={{ py: '0.8rem', mt: '1rem' }}
               >
                 Generate
-              </LoadingButton>
+              </Button>
             </Box>
           </FormProvider>
       </Box>
