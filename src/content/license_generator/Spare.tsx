@@ -104,18 +104,18 @@ type TypeSelect = TypeOf<typeof TypeSchema>;
  type GenerateInput = TypeOf<typeof generateSchema>;
 
 
-const defaultValues: GenerateInput = {
-  certificate_no: "",
-  customer_id: "",
-  end_customer_id: "",
-  activate: "",
-  serial_type: "",
-  type: [],
-  dashboard: "",
-  visualization: "",
-  storage: [],
-  expired: new Date(),
-  multi: true};
+// const defaultValues: GenerateInput = {
+//   certificate_no: "",
+//   customer_id: "",
+//   end_customer_id: "",
+//   activate: "",
+//   serial_type: "",
+//   type: [],
+//   dashboard: "",
+//   visualization: "",
+//   storage: [],
+//   expired: new Date(),
+//   multi: true};
 
 
 
@@ -150,8 +150,6 @@ const GeneratePage:FC = () => {
 
   const [TypeChoose, setTypeChoose] = React.useState<string[]>([]);
 
-  const [StorageChoose, setStorageChoose] = React.useState<string[]>([]);
-
 
   const TypehandleChange = (event: SelectChangeEvent<typeof TypeChoose>) => {
     const {
@@ -162,6 +160,8 @@ const GeneratePage:FC = () => {
       typeof value === 'string' ? value.split(',') : value,
     );
   };
+
+  const [StorageChoose, setStorageChoose] = React.useState<string[]>([]);
 
   const StoragehandleChange = (event: SelectChangeEvent<typeof StorageChoose>) => {
     const {
@@ -225,194 +225,198 @@ const GeneratePage:FC = () => {
     }
     console.log(errors);
 
+    // const handleReset = () => {
+    //   reset(defaultValues);
+    // };
+
     return (
-
-      <Grid
-          container
-          justifyContent='center'
-          alignItems='center'
-          sx={{ width: '100%', height: '100%' }}
-        >
-        <Box 
-        sx={{ maxWidth: '30rem'}}
-        justify-content = 'center'>
-            <Typography variant='h4' component='h1'  sx={{textAlign:'center', mb: '2rem'}}>
-                Generate Form
-            </Typography>
-           
-        <FormProvider {...methods}>
-            <Box
-            component='form'
-            noValidate
-            autoComplete='off'
-            onSubmit={handleSubmit(onSubmitHandler)}
-            >
-                
-            <RequestInput
-              name='certificate_no'
-              required
-              fullWidth
-              label='Certificate No' 
-              sx={{ mb: 2 }}
-              />
-            
-            <RequestInput
-               name='customer_id'
-               required
-               fullWidth
-               label='Customer ID'
-               sx={{ mb: 2 }}
-               />
-            
-            <RequestInput
-               name='end_customer_id'
-               required
-               fullWidth
-               label='End Customer ID'
-               sx={{ mb: 2 }}
-               />
-
-      <FormControl sx={{ mb: 2, width: 300 }}>
-      <InputLabel id="demo-multiple-name-label">Type</InputLabel>
-        <Select
-          {...register("type", { required: true, maxLength: 20 })}
-          required
-          displayEmpty
-          value={TypeChoose}
-          onChange={TypehandleChange}
-          input={<OutlinedInput label="Type"/>}
-          MenuProps={MenuProps}
-          inputProps={{ 'aria-label': 'Without label' }}
-        >
-          {typeChoose.map(({label,value}) => (
-          <MenuItem 
-            key={label}
-            value={value}
-            style={getTypeStyles(value,TypeChoose,theme)}>
-            {value}
-          </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-
-            <RequestInput
-               name='activate'
-               required
-               fullWidth
-               label='Activate'
-               sx={{ mb: 2 }}
-               />
-
-            <RequestInput
-               name='serial_type'
-               required
-               fullWidth
-               label='Serial Type'
-               sx={{ mb: 2 }}
-               />
-            
+        <Grid
+            container
+            justifyContent='center'
+            alignItems='center'
+            sx={{ width: '100%', height: '100%' }}
+          >
+          <Box 
+          sx={{ maxWidth: '30rem'}}
+          justify-content = 'center'>
+              <Typography variant='h4' component='h1'  sx={{textAlign:'center', mb: '2rem'}}>
+                  Generate Form
+              </Typography>
+             
+          <FormProvider {...methods}>
+              <Box
+              component='form'
+              noValidate
+              autoComplete='off'
+              onSubmit={handleSubmit(onSubmitHandler)}
+              >
+                  
+              <RequestInput
+                name='certificate_no'
+                required
+                fullWidth
+                label='Certificate No' 
+                sx={{ mb: 2 }}
+                />
+              
+              <RequestInput
+                 name='customer_id'
+                 required
+                 fullWidth
+                 label='Customer ID'
+                 sx={{ mb: 2 }}
+                 />
+              
+              <RequestInput
+                 name='end_customer_id'
+                 required
+                 fullWidth
+                 label='End Customer ID'
+                 sx={{ mb: 2 }}
+                 />
 
         <FormControl sx={{ mb: 2, width: 300 }}>
-        <InputLabel id="storage">Storage</InputLabel>
-        <Select
-          {...register("storage", { required: true, maxLength: 20 })}
-          displayEmpty
-          required
-          value={StorageChoose}
-          onChange={StoragehandleChange}
-          input={<OutlinedInput label="Storage"/>}
-          MenuProps={MenuProps}
-          inputProps={{ 'aria-label': 'Without label' }}
-        >
-           {storageChoose.map(({label,value}) => (
-          <MenuItem 
-            key={label}
-            value={value}
-            style={getStorageStyles(value, StorageChoose,theme)}>
-            {value}
-          </MenuItem>
-          ))}
-        </Select>
-        
-      </FormControl>
-
-
-
-        <FormControl sx={{ mb: 2, width: 300 }}>
-    <Stack component="form" noValidate spacing={3}>
-      <TextField
-        id="expired"
-        label="Expired Date"
-        type="datetime-local"
-        sx={{ width: 250 }}
-        InputLabelProps={{
-          shrink: true,
-        }}
-      />
-
-            <FormHelperText error={!!errors['expired']}>
-                {errors['expired'] ? errors['expired'].message : 'Require for Generate'}
-              </FormHelperText>
-            </Stack>
-           
-            </FormControl>
-            
-
-            <RequestInput
-              name='dashboard'
-              required
-              fullWidth
-              label='Dashboard'
-              sx={{ mb: 2 }}
-              />
+        <InputLabel id="demo-multiple-name-label">Type</InputLabel>
+          <Select
+            name = "type"
+            required
+            displayEmpty
+            value={TypeChoose}
+            onChange={TypehandleChange}
+            input={<OutlinedInput label="Type"/>}
+            MenuProps={MenuProps}
+            inputProps={{ 'aria-label': 'Without label' }}
+          >
+            {typeChoose.map(({label,value}) => (
+            <MenuItem 
+              key={label}
+              value={value}
+              style={getTypeStyles(value,TypeChoose,theme)}>
+              {value}
+            </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
 
               <RequestInput
-              name='visualization'
-              required
-              fullWidth
-              label='Visualization'
-              sx={{ mb: 2 }}
-              />
+                 name='activate'
+                 required
+                 fullWidth
+                 label='Activate'
+                 sx={{ mb: 2 }}
+                 />
+
+              <RequestInput
+                 name='serial_type'
+                 required
+                 fullWidth
+                 label='Serial Type'
+                 sx={{ mb: 2 }}
+                 />
               
-            <FormGroup>
-              <RadioGroup
-              row
-              aria-labelledby="demo-row-radio-buttons-group-label"
-              name="multi"
+
+          <FormControl sx={{ mb: 2, width: 300 }}>
+          <InputLabel id="storage">Storage</InputLabel>
+          <Select
+            {...register("storage", { required: true, maxLength: 20 })}
+            name = "storage"
+            displayEmpty
+            required
+            value = {StorageChoose}
+            onChange={StoragehandleChange}
+            input={<OutlinedInput label="Storage"/>}
+            MenuProps={MenuProps}
+            inputProps={{ 'aria-label': 'Without label' }}
+          >
+             {storageChoose.map(({label,value}) => (
+            <MenuItem 
+              key={label}
               value={value}
-              onChange={handleChange}
+              style={getStorageStyles(value, StorageChoose,theme)}>
+              {value}
+            </MenuItem>
+            ))}
+          </Select>
+          
+        </FormControl>
+
+
+
+          <FormControl sx={{ mb: 2, width: 300 }}>
+      <Stack component="form" noValidate spacing={3}>
+        <TextField
+          id="expired"
+          label="Expired Date"
+          type="datetime-local"
+          sx={{ width: 250 }}
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+
+              <FormHelperText error={!!errors['expired']}>
+                  {errors['expired'] ? errors['expired'].message : 'Require for Generate'}
+                </FormHelperText>
+              </Stack>
+             
+              </FormControl>
+              
+
+              <RequestInput
+                name='dashboard'
+                required
+                fullWidth
+                label='Dashboard'
+                sx={{ mb: 2 }}
+                />
+
+                <RequestInput
+                name='visualization'
+                required
+                fullWidth
+                label='Visualization'
+                sx={{ mb: 2 }}
+                />
+                
+              <FormGroup>
+                <RadioGroup
+                row
+                aria-labelledby="demo-row-radio-buttons-group-label"
+                name="multi"
+                value={value}
+                onChange={handleChange}
+                >
+                <FormControlLabel
+                value="true"
+                {...register("multi")}
+                  control={<Radio required />}
+                  label="True"
+                />
+                <FormControlLabel 
+                value="false"
+                {...register("multi")}
+                  control={<Radio required />}
+                  label= "False"
+                />
+                <FormHelperText error={!!errors['multi']}>
+                  {errors['multi'] ? errors['multi'].message : ''}
+                </FormHelperText>
+             </RadioGroup>
+              </FormGroup>
+              <LoadingButton
+                variant='contained'
+                fullWidth
+                type='submit'
+                loading={loading}
+                sx={{ py: '0.8rem', mt: '1rem' }}
               >
-              <FormControlLabel
-              value="true"
-              {...register("multi")}
-                control={<Radio required />}
-                label="True"
-              />
-              <FormControlLabel 
-              value="false"
-              {...register("multi")}
-                control={<Radio required />}
-                label= "False"
-              />
-              <FormHelperText error={!!errors['multi']}>
-                {errors['multi'] ? errors['multi'].message : ''}
-              </FormHelperText>
-           </RadioGroup>
-            </FormGroup>
-            <LoadingButton
-              variant='contained'
-              fullWidth
-              type='submit'
-              loading={loading}
-              sx={{ py: '0.8rem', mt: '1rem' }}
-            >
-              Generate
-            </LoadingButton>
-          </Box>
-        </FormProvider>
-    </Box>
-    </Grid>
-    )
+                Generate
+              </LoadingButton>
+            </Box>
+          </FormProvider>
+      </Box>
+      </Grid>
+    );
   };
 
 export default GeneratePage;
