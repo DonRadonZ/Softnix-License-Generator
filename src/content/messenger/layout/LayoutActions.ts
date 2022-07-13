@@ -28,7 +28,7 @@ export interface conversationMembersViewDisplayedAction{
     type: typeof LayoutActionType.CONVERSATION_MEMBERS_VIEW_DISPLAYED;
 }
 
-export interface joinConversationViewDisplayAction {
+export interface joinConversationViewDisplayedAction {
     type: typeof LayoutActionType.JOIN_CONVERSATION_VIEW_DISPLAYED;
 }
 
@@ -41,7 +41,7 @@ export type LayoutActions =
 | menuViewDisplayedAction
 | currentConversationViewDisplayedAction
 | conversationMembersViewDisplayedAction
-| joinConversationViewDisplayAction;
+| joinConversationViewDisplayedAction;
 
 export const menuViewDisplayed = (): menuViewDisplayedAction => {
     return {
@@ -49,7 +49,7 @@ export const menuViewDisplayed = (): menuViewDisplayedAction => {
     };
 };
 
-export const joinconversationViewDisplayed = (): joinConversationViewDisplayAction => {
+export const joinconversationViewDisplayed = (): joinConversationViewDisplayedAction => {
     return { 
     type: LayoutActionType.JOIN_CONVERSATION_VIEW_DISPLAYED
     };
