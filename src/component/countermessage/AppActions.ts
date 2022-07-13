@@ -1,24 +1,24 @@
 import { useDispatch as OriginalUseDispatch } from 'react-redux';
-// import { focusOnConversationAction } from "features/currentConversation/currentConversationModel";
+import { focusOnConversationAction } from "../../content/messenger/currentConversation/currentConversationModel";
 // import {
 //   MessageDraftUpdatedAction,
 //   MessageDraftDiscardedAction
 // } from "features/joinedConversations/DraftsModel";
-// import {
-//   logingInAction,
-//   loginSucceededAction
-// } from "../../content/authentication/login/authenticationModel";
-// import {
-//   menuViewDisplayedAction,
-//   currentConversationViewDisplayedAction,
-//   conversationMembersViewDisplayedAction,
-//   joinConversationViewDisplayedAction,
-//   menuViewHiddenAction,
-//   currentConversationViewHiddenAction,
-//   conversationMembersViewHiddenAction,
-//   joinConversationViewHiddenAction
-// } from "features/layout/LayoutActions";
-// import { SignalReceivedAction } from "pubnub-redux/dist/features/signal/SignalActions";
+import {
+  logingInAction,
+  loginSucceededAction
+} from "../../content/authentication/login/authenticationModel";
+import {
+  menuViewDisplayedAction,
+  currentConversationViewDisplayedAction,
+  conversationMembersViewDisplayedAction,
+  joinConversationViewDisplayedAction,
+  menuViewHiddenAction,
+  currentConversationViewHiddenAction,
+  conversationMembersViewHiddenAction,
+  joinConversationViewHiddenAction
+} from "../../content/messenger/layout/LayoutActions";
+//import { SignalReceivedAction } from "pubnub-redux/dist/features/signal/SignalActions";
 // import {
 //   TypingIndicatorEnvelope,
 //   RemoveTypingIndicatorAction,
@@ -37,21 +37,21 @@ import { useDispatch as OriginalUseDispatch } from 'react-redux';
 //  * Thunks and other dispatchable objects that will not end up being received by
 //  * reducers directly should not be added to this union.
 //  */
-// export type AppActions =
-//   | focusOnConversationAction
-//   | logingInAction
-//   | loginSucceededAction
-//   | MessageDraftUpdatedAction
-//   | MessageDraftDiscardedAction
-//   | menuViewDisplayedAction
-//   | currentConversationViewDisplayedAction
-//   | conversationMembersViewDisplayedAction
-//   | joinConversationViewDisplayedAction
-//   | menuViewHiddenAction
-//   | currentConversationViewHiddenAction
-//   | conversationMembersViewHiddenAction
-//   | joinConversationViewHiddenAction
-//   | SignalReceivedAction<TypingIndicatorEnvelope>
-//   | MessageReceivedAction<MessageEnvelope>
-//   | RemoveTypingIndicatorAction
+export type AppActions =
+  | focusOnConversationAction
+  | logingInAction
+  | loginSucceededAction
+  // | MessageDraftUpdatedAction
+  // | MessageDraftDiscardedAction
+  | menuViewDisplayedAction
+  | currentConversationViewDisplayedAction
+  | conversationMembersViewDisplayedAction
+  | joinConversationViewDisplayedAction
+  | menuViewHiddenAction
+  | currentConversationViewHiddenAction
+  | conversationMembersViewHiddenAction
+  | joinConversationViewHiddenAction
+  // | SignalReceivedAction<TypingIndicatorEnvelope>
+  // | MessageReceivedAction<MessageEnvelope>
+  // | RemoveTypingIndicatorAction
   // | RemoveTypingIndicatorAllAction;
