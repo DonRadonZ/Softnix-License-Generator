@@ -13,7 +13,7 @@ import License from './content/datatable/licenselist/License';
 //import GenerateForm from './content/license_generator/Main';
 //import LicenseRequest from './content/datatable/licenserequestlist/LicenseRequestList';
 import Spareform from './content/license_generator/Spare';
-//import RegisterPage2 from './content/license_generator/Spare2'
+import RegisterPage2 from './content/license_generator/Spare2'
 
  
  const App = () => {
@@ -26,7 +26,7 @@ import Spareform from './content/license_generator/Spare';
           <Route path = "/Messenger" element={<License/>}/>
           <Route path = "/Contact" element={<License/>}/>
           <Route path = "/LicenseList" element={<License/>}/>
-          <Route path = "/RegisterPage2" element={<License/>}/>
+          <Route path = "/RegisterPage2" element={<RegisterPage2/>}/>
           <Route path = "/Licensegenerator" element={<Spareform/>}/>
         </Routes>
         <Footer/>
