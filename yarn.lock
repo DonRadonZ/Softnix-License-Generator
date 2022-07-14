@@ -2503,6 +2503,11 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.5.tgz#5f19d2b85a98e9558036f6a3cacc8819420f05cf"
   integrity sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
 
+"@types/pubnub@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@types/pubnub/-/pubnub-7.0.0.tgz#fec04d105d81c1e6d016ff39db532d009eb4b5fb"
+  integrity sha512-u5YUIk+57g87W09eGNpSi82K4lsVSvlNbSE9gCtxBR/eb6X56Is7QQRG14fnc/RGvoep5vwN4yhIRDx+8Go35w==
+
 "@types/q@^1.5.1":
   version "1.5.5"
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.5.tgz#75a2a8e7d8ab4b230414505d92335d1dcb53a6df"
@@ -8461,10 +8466,10 @@ pubnub-redux@^0.0.13:
   resolved "https://registry.yarnpkg.com/pubnub-redux/-/pubnub-redux-0.0.13.tgz#c91837699894438cd41d517e281b3d0cd5ab0c47"
   integrity sha512-Ht1byY4qCrAQfML2o2leRpXYGxDpBFnCvhqpanxjCmTwQFdp70kjnEMNevFrJn0AwQ3myxW/5SHxYfKFCQ23NQ==
 
-pubnub@^7.1.2:
-  version "7.1.2"
-  resolved "https://registry.yarnpkg.com/pubnub/-/pubnub-7.1.2.tgz#72c80f1d4b9937354a58e7150130aafababd46e8"
-  integrity sha512-cDC63rHK2SiZumKyzDJyFfUn7val0D3IhnDdbmrbwgKI/d9f/S+SzzC3xKRMIq9aziXeTLpsS55KplwmUj1vmg==
+pubnub@^7.2.0:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/pubnub/-/pubnub-7.2.0.tgz#296dc831f017670014042127b4db26bf4257bbff"
+  integrity sha512-q8KR1T2lwG3l4zSXic7oeskFZpQ4c/oNDbopEMJHn7G8KvLuwQM+d/ntlZDksCyvCZ44adz2hs/sEZ87x96HLA==
   dependencies:
     agentkeepalive "^3.5.2"
     buffer "^6.0.3"
