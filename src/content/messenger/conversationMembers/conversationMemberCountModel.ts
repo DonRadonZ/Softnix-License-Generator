@@ -1,6 +1,6 @@
-// import { AppState } from './../../../component/counter/storeTypes';
-import { createSelector } from "reselect";
-// import { createChannelMembersCountReducer } from "pubnub-redux";
+ import { AppState } from './../../../component/countermessage/storeTypes';
+// import { createSelector } from "reselect";
+//  import { createChannelMembersCountReducer } from "pubnub-redux";
 
 // export  interface ConversationMembersCount {
 //     [conversationId: string]: number;

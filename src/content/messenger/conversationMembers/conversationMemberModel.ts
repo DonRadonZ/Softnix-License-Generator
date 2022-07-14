@@ -1,13 +1,13 @@
 
-// import { AppState } from './../../../component/counter/storeTypes';
+import { AppState } from './../../../component/countermessage/storeTypes';
 import { createSelector } from "reselect";
-// import { createChannelMembersReducer } from "pubnub-redux";
+import { createChannelMembersReducer } from "pubnub-redux";
 
-// export type MembershipHash = { [id: string]: {id:string}[] };
+export type MembershipHash = { [id: string]: {id:string}[] };
 
-// export interface ConversationMembers {
-//     [conversationId: string]: string[];
-// }
+export interface ConversationMembers {
+    [conversationId: string]: string[];
+}
 
 // const getByConversationIdSlice = (state: AppState) => state.conversationMembers;
 

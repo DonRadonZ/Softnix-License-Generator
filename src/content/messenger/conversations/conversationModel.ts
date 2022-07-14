@@ -1,15 +1,15 @@
 import {combineReducers} from "redux";
 // import { getConversationsByUserId } from 'features/joinedConversations/joinedConversationModel';
 // import { conversationStateReducer } from 'features/conversations/conversationModel';
-// import { AppState } from './../../../component/counter/storeTypes';
-// import {createSelector} from "reselect";
-// import {
-//     createChannelDataReducer,
-//     createChannelsListReducer,
-//     Channel
-// } from "pubnub-redux";
+import { AppState } from './../../../component/countermessage/storeTypes';
+import {createSelector} from "reselect";
+import {
+    createChannelDataReducer,
+    createChannelsListReducer,
+    Channel
+} from "pubnub-redux";
 // import {RequireFields} from "foundations/utilities/requireFields";
-// import differenceInCalendarQuarters from 'date-fns/fp/differenceInCalendarQuarters';
+import differenceInCalendarQuarters from 'date-fns/fp/differenceInCalendarQuarters';
 
 /**
  * Define which fields of PubNub's User object is accessed by this application.
