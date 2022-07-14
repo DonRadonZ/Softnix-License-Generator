@@ -1,15 +1,14 @@
-import React from 'react';
-// import { ThunkAction } from "../../../component/counter/storeTypes";
-// import { loggingIn, loginSucceeded } from "./authenticationModel";
-// import { fetchUserData, fetchMemberships } from "pubnub-redux";
-// import { getConversationsByUserId } from "features/joinedConversations/joinedConversationModel";
+ import { ThunkAction } from "../../../component/countermessage/storeTypes";
+ import { loggingIn, loginSucceeded } from "./authenticationModel";
+ import { fetchUserData, fetchMemberships } from "pubnub-redux";
+ import { getConversationsByUserId } from "../../messenger/joinedConversations/joinedConversationModel";
 
 // export const login = (uuid: string): ThunkAction<Promise<void>> => {
 //   return (dispatch, getState, context) => {
 //     dispatch(loggingIn());
 
 //     // Show the login screen for a minimum amount of time as a splash screen
-//     //const timer = new Promise(resolve => setTimeout(resolve, 2000));
+//     // const timer = new Promise(resolve => setTimeout(resolve, 2000));
 
 //     // Set the UUID of the current user to ensure that presence works correctly
 //     context.pubnub.api.setUUID(uuid);
