@@ -1,8 +1,8 @@
 import React, { useContext} from "react";
 import {useSelector, useDispatch} from "react-redux";
-// import { getViewStates } from "features/layout/Selectors";
+import { getViewStates } from "../layout/Selectors";
 // import { MyConversations } from "features/joinedConversations/MyConversations/MyConversations";
-// import { ThemeContext } from "styled-components";
+ import { ThemeContext } from "styled-components";
 // import { useMediaQuery } from "foundations/hooks/useMediaQuery";
 // import { MyUserDetails } from "features/currentUser/MyUserDetails";
 // import { menuViewHidden } from "features/layout/LayoutActions";
@@ -17,13 +17,13 @@ import {useSelector, useDispatch} from "react-redux";
 //     StyledBox,
 //     FlexRow,
 //     FlexColumn
-//   } from "foundations/components/layout";
+//   } from "../messenger/foundations/components/layout";
 
-//   const Menu = () => {
-//     const views = useSelector(getViewStates);
-//     const theme = useContext(ThemeContext);
+   const Menu = () => {
+     const views = useSelector(getViewStates);
+     const theme = useContext(ThemeContext);
 //     const isMedium = useMediaQuery(theme.mediaQueries.medium);
-//     const dispatch = useDispatch();
+     const dispatch = useDispatch();
 
 //     return(
 //         <Drawer
@@ -61,6 +61,6 @@ import {useSelector, useDispatch} from "react-redux";
 //           <MyConversations />
 //         </Drawer>
 //     );
-// };
+ };
 
-// export { Menu };
+ export { Menu };
