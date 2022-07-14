@@ -12,7 +12,7 @@ import {
   import { useEffect, useState } from 'react';
   import { LoadingButton } from '@mui/lab';
   import Checkbox from '@mui/material/Checkbox';
-  import RequestInput from '../../component/requestinput/RequestInput';
+  import RequestInput from '../../component/textinput/generate/GenerateTextInput';
 
   import Typeselect from './Typeselect';
 

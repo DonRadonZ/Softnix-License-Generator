@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
 import {Grid, FormGroup, FormHelperText, Box, Typography } from '@mui/material';
 import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
-import { object, string, TypeOf, boolean, date } from 'zod';
+import { object, string, TypeOf, boolean, date, z} from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import InputLabel from '@mui/material/InputLabel';
 import { FC } from 'react';
 
-import { Theme,useTheme } from '@mui/material/styles';
+// import { Theme,useTheme } from '@mui/material/styles';
 
 
 import Stack from '@mui/material/Stack';
@@ -17,14 +17,15 @@ import RadioGroup from '@mui/material/RadioGroup';
 import Radio from '@mui/material/Radio';
 import Button from '@mui/material/Button';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import RequestInput from '../../component/requestinput/RequestInput';
 //import FormLabel from '@mui/material/FormLabel';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
-
+import RequestInput from '../../component/textinput/generate/GenerateTextInput';
+// import LicenseTypeSelect from "../../component/textinput/generate/LicenseTypeSelect";
+import GenerateNumberInput from "../../component/textinput/generate/GenerateNumberInput";
 
 
 
@@ -45,41 +46,42 @@ const API = "http://192.168.10.170:3000/v1/api/slg";
     },
   };
 
-  const TypeSchema = object({
-    label: string(),
-    value: string(),
-   });
-type TypeSelect = TypeOf<typeof TypeSchema>;
+  // const TypeSchema = object({
+  //   label: string(),
+  //   value: string(),
+  //  });
+// type TypeSelect = TypeOf<typeof TypeSchema>;
   
 
-  const typeChoose: TypeSelect[]= [
-    {label:"SLG",value:"SLG"},
-    {label:"LA",value:"LA"}
+  // const typeChoose: TypeSelect[]= [
+  //   {label:"SLG",value:"SLG"},
+  //   {label:"LA",value:"LA"}
   
-  ];
+  // ];
 
-  const StorageSchema = object({
-    label: string(),
-    value: string(),
-   });
+  // const StorageSchema = object({
+  //   label: string(),
+  //   value: string(),
+  //  });
 
-   type StorageSelect = TypeOf<typeof StorageSchema>; 
+  //  type StorageSelect = TypeOf<typeof StorageSchema>; 
 
   // Storage Data
   
+  
 
-  const storageChoose:StorageSelect[] = [
-    {label:"20 GB", value:"20 GB"},
-    {label:"50 GB", value:"50 GB"},
-    {label:"100 GB", value:"100 GB"},
-    {label:"200 GB", value:"200 GB"},
-    {label:"500 GB", value:"500 GB"},
-    {label:"1 TB", value:"1 TB"},
-    {label:"2 TB", value:"2 TB"},
-    {label:"3 TB", value:"3 TB"},
-    {label:"Unlimited", value:"Unlimited"}
+  // const storageChoose:StorageSelect[] = [
+  //   {label:"20 GB", value:"20 GB"},
+  //   {label:"50 GB", value:"50 GB"},
+  //   {label:"100 GB", value:"100 GB"},
+  //   {label:"200 GB", value:"200 GB"},
+  //   {label:"500 GB", value:"500 GB"},
+  //   {label:"1 TB", value:"1 TB"},
+  //   {label:"2 TB", value:"2 TB"},
+  //   {label:"3 TB", value:"3 TB"},
+  //   {label:"Unlimited", value:"Unlimited"}
  
-  ];
+  // ];
   
 
 
@@ -90,13 +92,13 @@ type TypeSelect = TypeOf<typeof TypeSchema>;
     end_customer_id: string().nonempty('required to generate'),
     activate: string().nonempty('required to generate'),
     serial_type: string().nonempty('required to generate'),
-    type: TypeSchema.array().max(1, { message: "Please pick for generate" }),
+    type: z.enum(["SLG","LA"]),
     dashboard: string().nonempty('required to generate'),
     visualization: string().nonempty('required to generate'),
-    storage: StorageSchema.array().max(1, { message: "Please pick for generate" }),
+    storage: z.enum(["20GB","50GB","100GB","200GB","500GB","1TB","2TB","5TB","UNLIMITED"]),
     expired: date(),
     multi: boolean( {
-      invalid_type_error: 'Select is required to generate',
+      invalid_type_error: 'required to generate',
     }),
 
 });
@@ -119,29 +121,15 @@ type TypeSelect = TypeOf<typeof TypeSchema>;
 
 
 
-  function getTypeStyles(name: string, TypeChoose: string[], theme: Theme) {
-    return {
-      fontWeight:
-      TypeChoose.indexOf(name) === -1
-          ? theme.typography.fontWeightRegular
-          : theme.typography.fontWeightMedium,
-    };
-  }
+
 
 
   // Storage Part
-  function getStorageStyles(name: string, StorageChoose: string[], theme: Theme) {
-    return {
-      fontWeight:
-      StorageChoose.indexOf(name) === -1
-          ? theme.typography.fontWeightRegular
-          : theme.typography.fontWeightMedium,
-    };
-  }
+
   
 
 const GeneratePage:FC = () => {
-  const theme = useTheme();
+  // const theme = useTheme();
   
 
   
@@ -274,25 +262,21 @@ const GeneratePage:FC = () => {
                  />
 
         <FormControl sx={{ mb: 2, width: 300 }}>
-        <InputLabel id="demo-multiple-name-label">Type</InputLabel>
+        <InputLabel id="type">Type</InputLabel>
           <Select
+          {...register("type", { required: true, maxLength: 20 })}
             name = "type"
             required
             displayEmpty
             value={TypeChoose}
-            onChange={TypehandleChange}
             input={<OutlinedInput label="Type"/>}
             MenuProps={MenuProps}
+            onChange={TypehandleChange}
             inputProps={{ 'aria-label': 'Without label' }}
           >
-            {typeChoose.map(({label,value}) => (
-            <MenuItem 
-              key={label}
-              value={value}
-              style={getTypeStyles(value,TypeChoose,theme)}>
-              {value}
-            </MenuItem>
-            ))}
+            
+            <MenuItem value="SLG">SLG</MenuItem>
+            <MenuItem value="LA">LA</MenuItem>
           </Select>
         </FormControl>
 
@@ -321,19 +305,20 @@ const GeneratePage:FC = () => {
             displayEmpty
             required
             value = {StorageChoose}
-            onChange={StoragehandleChange}
             input={<OutlinedInput label="Storage"/>}
             MenuProps={MenuProps}
+            onChange={StoragehandleChange}
             inputProps={{ 'aria-label': 'Without label' }}
           >
-             {storageChoose.map(({label,value}) => (
-            <MenuItem 
-              key={label}
-              value={value}
-              style={getStorageStyles(value, StorageChoose,theme)}>
-              {value}
-            </MenuItem>
-            ))}
+            <MenuItem value="20GB">20 GB</MenuItem>
+            <MenuItem value="50GB">50 GB</MenuItem>
+            <MenuItem value="100GB">100 GB</MenuItem>
+            <MenuItem value="200GB">200 GB</MenuItem>
+            <MenuItem value="500GB">500 GB</MenuItem>
+            <MenuItem value="1TB">1 TB</MenuItem>
+            <MenuItem value="2TB">2 TB</MenuItem>
+            <MenuItem value="3TB">3 TB</MenuItem>
+            <MenuItem value="Unlimited">Unlimited</MenuItem>
           </Select>
           
         </FormControl>
@@ -350,17 +335,13 @@ const GeneratePage:FC = () => {
           InputLabelProps={{
             shrink: true,
           }}
-        />
-
-              <FormHelperText error={!!errors['expired']}>
-                  {errors['expired'] ? errors['expired'].message : 'Require for Generate'}
-                </FormHelperText>
-              </Stack>
+        /> 
+          </Stack>
              
-              </FormControl>
+          </FormControl>
               
 
-              <RequestInput
+              <GenerateNumberInput
                 name='dashboard'
                 required
                 fullWidth
@@ -368,7 +349,7 @@ const GeneratePage:FC = () => {
                 sx={{ mb: 2 }}
                 />
 
-                <RequestInput
+                <GenerateNumberInput
                 name='visualization'
                 required
                 fullWidth

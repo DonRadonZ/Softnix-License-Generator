@@ -9,7 +9,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 
 
-import RequestInput from '../../component/requestinput/RequestInput';
+import RequestInput from '../../component/textinput/generate/GenerateTextInput';
 
 const requestSchema = object({
 company:string(),

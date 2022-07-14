@@ -10,9 +10,14 @@ import DashboardContent from './content/dashboard/Dashboard';
 
 //LicenseSite
 import License from './content/datatable/licenselist/License';
-//import GenerateForm from './content/license_generator/Main';
+
+
 //import LicenseRequest from './content/datatable/licenserequestlist/LicenseRequestList';
+
+//Generate Form
 import Spareform from './content/license_generator/Spare';
+
+//Request Form
 //import RegisterPage2 from './content/license_generator/Spare2'
 
  

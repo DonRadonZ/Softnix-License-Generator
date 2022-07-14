@@ -3,7 +3,7 @@ import { Theme } from '../theme/Theme';
 
 const GlobalStyles = createGlobalStyle<{theme: Theme}>`
   body{
-    color: ${({ theme}) => theme.color.importantText};
+    color: ${({ theme}) => theme.colors.importantText};
     font-family:${({ theme}) => theme.fonts.app};
     font-size:${({ theme}) => theme.fontSizes.regular};
     font-weight: ${({ theme }) => theme.fontWeights.regular};
