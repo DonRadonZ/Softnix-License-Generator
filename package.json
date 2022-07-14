@@ -79,5 +79,10 @@
   },
   "devDependencies": {
     "@types/styled-components": "^5.1.25"
-  }
+  },
+  "description": "Softnix License Generator",
+  "main": "index.js",
+  "repository": "https://gitlab.com/supachai27102000/softnix-license-generator.git",
+  "author": "RadonZ <supachai27102000@gmail.com>",
+  "license": "MIT"
 }
