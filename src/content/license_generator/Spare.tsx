@@ -8,7 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import InputLabel from '@mui/material/InputLabel';
 import { FC } from 'react';
 
-// import { Theme,useTheme } from '@mui/material/styles';
+import { Theme,useTheme } from '@mui/material/styles';
 
 
 import Stack from '@mui/material/Stack';
@@ -53,11 +53,19 @@ const API = "http://192.168.10.170:3000/v1/api/slg";
 // type TypeSelect = TypeOf<typeof TypeSchema>;
   
 
-  // const typeChoose: TypeSelect[]= [
-  //   {label:"SLG",value:"SLG"},
-  //   {label:"LA",value:"LA"}
+  const type = [
+    'SLG',
+    'LA'
   
-  // ];
+  ];
+  function getType(name: string, TypeChoose: string[], theme: Theme) {
+    return {
+      fontWeight:
+        TypeChoose.indexOf(name) === -1
+          ? theme.typography.fontWeightRegular
+          : theme.typography.fontWeightMedium,
+    };
+  }
 
   // const StorageSchema = object({
   //   label: string(),
@@ -82,7 +90,26 @@ const API = "http://192.168.10.170:3000/v1/api/slg";
   //   {label:"Unlimited", value:"Unlimited"}
  
   // ];
-  
+
+  const storage =  [
+    '20 GB',
+    '50 GB',
+    '100 GB',
+    '200 GB',
+    '500 GB',
+    '1 TB',
+    '2 TB',
+    '3 TB',
+    'Unlimited'
+  ];
+  function getStorage(name: string, StorageChoose: string[], theme: Theme) {
+    return {
+      fontWeight:
+      StorageChoose.indexOf(name) === -1
+          ? theme.typography.fontWeightRegular
+          : theme.typography.fontWeightMedium,
+    };
+  }
 
 
   const generateSchema = object({
@@ -96,7 +123,9 @@ const API = "http://192.168.10.170:3000/v1/api/slg";
     dashboard: string().nonempty('required to generate'),
     visualization: string().nonempty('required to generate'),
     storage: z.enum(["20GB","50GB","100GB","200GB","500GB","1TB","2TB","5TB","UNLIMITED"]),
-    expired: date(),
+    expired: z.preprocess((arg) => {
+      if (typeof arg == "string" || arg instanceof Date) return new Date(arg);
+    }, z.date()),
     multi: boolean( {
       invalid_type_error: 'required to generate',
     }),
@@ -133,7 +162,7 @@ const GeneratePage:FC = () => {
   
 
   
-
+  const theme = useTheme();
 
 
   const [TypeChoose, setTypeChoose] = React.useState<string[]>([]);
@@ -264,7 +293,7 @@ const GeneratePage:FC = () => {
         <FormControl sx={{ mb: 2, width: 300 }}>
         <InputLabel id="type">Type</InputLabel>
           <Select
-          {...register("type", { required: true, maxLength: 20 })}
+          {...register("type", { required: true})}
             name = "type"
             required
             displayEmpty
@@ -275,8 +304,14 @@ const GeneratePage:FC = () => {
             inputProps={{ 'aria-label': 'Without label' }}
           >
             
-            <MenuItem value="SLG">SLG</MenuItem>
-            <MenuItem value="LA">LA</MenuItem>
+            {type.map((name) =>(
+            <MenuItem key={name}
+                      value={name}
+                      style={getType(name,TypeChoose, theme)}
+                  >
+                    {name}
+            </MenuItem>
+            ))}
           </Select>
         </FormControl>
 
@@ -300,7 +335,7 @@ const GeneratePage:FC = () => {
           <FormControl sx={{ mb: 2, width: 300 }}>
           <InputLabel id="storage">Storage</InputLabel>
           <Select
-            {...register("storage", { required: true, maxLength: 20 })}
+            {...register("storage", { required: true })}
             name = "storage"
             displayEmpty
             required
@@ -310,15 +345,14 @@ const GeneratePage:FC = () => {
             onChange={StoragehandleChange}
             inputProps={{ 'aria-label': 'Without label' }}
           >
-            <MenuItem value="20GB">20 GB</MenuItem>
-            <MenuItem value="50GB">50 GB</MenuItem>
-            <MenuItem value="100GB">100 GB</MenuItem>
-            <MenuItem value="200GB">200 GB</MenuItem>
-            <MenuItem value="500GB">500 GB</MenuItem>
-            <MenuItem value="1TB">1 TB</MenuItem>
-            <MenuItem value="2TB">2 TB</MenuItem>
-            <MenuItem value="3TB">3 TB</MenuItem>
-            <MenuItem value="Unlimited">Unlimited</MenuItem>
+            {storage.map((name) =>(
+            <MenuItem key={name}
+                      value={name}
+                      style={getStorage(name,StorageChoose, theme)}
+                  >
+                    {name}
+            </MenuItem>
+            ))}
           </Select>
           
         </FormControl>
@@ -327,7 +361,7 @@ const GeneratePage:FC = () => {
 
           <FormControl sx={{ mb: 2, width: 300 }}>
       <Stack component="form" noValidate spacing={3}>
-        <TextField
+        <RequestInput
           id="expired"
           label="Expired Date"
           type="datetime-local"
@@ -335,9 +369,9 @@ const GeneratePage:FC = () => {
           InputLabelProps={{
             shrink: true,
           }}
+          {...register("expired", {required: true})}
         /> 
           </Stack>
-             
           </FormControl>
               
 
@@ -377,10 +411,10 @@ const GeneratePage:FC = () => {
                   control={<Radio required />}
                   label= "False"
                 />
-                <FormHelperText error={!!errors['multi']}>
+             </RadioGroup>
+             <FormHelperText error={!!errors['multi']}>
                   {errors['multi'] ? errors['multi'].message : ''}
                 </FormHelperText>
-             </RadioGroup>
               </FormGroup>
               <Button
                 variant='contained'
