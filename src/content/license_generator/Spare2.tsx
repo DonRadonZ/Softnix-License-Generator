@@ -13,9 +13,11 @@ import {
   import { LoadingButton } from '@mui/lab';
   import Checkbox from '@mui/material/Checkbox';
   import RequestInput from '../../component/textinput/generate/GenerateTextInput';
+  //import axios from 'axios'
 
   import Typeselect from './Typeselect';
 
+  //const API = "http://192.168.10.170:3000/v1/api/slg";
 
   const registerSchema = object({
     name: string()
