@@ -8,7 +8,7 @@ import { LayoutStateReducer } from "../../content/messenger/layout/LayoutReducer
 // import { TypingIndicatorStateReducer } from "features/typingIndicator/typingIndicatorModel";
 // import { conversationStateReducer } from "features/conversations/conversationModel";
  import { JoinedConversationsStateReducer } from "../../content/messenger/joinedConversations/joinedConversationModel";
-// import { ConversationDraftStateReducer } from "features/joinedConversations/DraftsModel";
+ import { ConversationDraftStateReducer } from "../../content/messenger/joinedConversations/DraftModel";
 // import { ConversationMembersStateReducer } from "features/conversationMembers/conversationMemberModel";
 // import { ConversationMembersCountStateReducer } from "features/conversationMembers/conversationMemberCountModel";
 // import { NetworkStatusReducer } from "features/currentUser/networkStatusModel";
@@ -24,7 +24,7 @@ const rootReducer = combineReducers({
 //   users: UsersReducer,
 //   conversations: conversationStateReducer,
    joinedConversations: JoinedConversationsStateReducer,
-//   drafts: ConversationDraftStateReducer,
+   drafts: ConversationDraftStateReducer,
 //   conversationMembers: ConversationMembersStateReducer,
 //   conversationMembersCount: ConversationMembersCountStateReducer,
 //   memberPresence: MemberPresenceReducer,

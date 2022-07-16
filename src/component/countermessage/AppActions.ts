@@ -1,9 +1,9 @@
 import { useDispatch as OriginalUseDispatch } from 'react-redux';
 import { focusOnConversationAction } from "../../content/messenger/currentConversation/currentConversationModel";
-// import {
-//   MessageDraftUpdatedAction,
-//   MessageDraftDiscardedAction
-// } from "features/joinedConversations/DraftsModel";
+import {
+  MessageDraftUpdatedAction,
+  MessageDraftDiscardedAction
+} from "../../content/messenger/joinedConversations/DraftModel";
 import {
   logingInAction,
   loginSucceededAction
@@ -24,7 +24,7 @@ import {
 //   RemoveTypingIndicatorAction,
 //   RemoveTypingIndicatorAllAction
 // } from "features/typingIndicator/typingIndicatorModel";
-// import { MessageReceivedAction } from "pubnub-redux/dist/features/message/MessageActions";
+ import { MessageReceivedAction } from "pubnub-redux/dist/features/message/MessageActions";
 // import { MessageEnvelope } from "features/messages/messageModel";
 
 // /**
@@ -41,8 +41,8 @@ export type AppActions =
   | focusOnConversationAction
   | logingInAction
   | loginSucceededAction
-  // | MessageDraftUpdatedAction
-  // | MessageDraftDiscardedAction
+   | MessageDraftUpdatedAction
+   | MessageDraftDiscardedAction
   | menuViewDisplayedAction
   | currentConversationViewDisplayedAction
   | conversationMembersViewDisplayedAction
