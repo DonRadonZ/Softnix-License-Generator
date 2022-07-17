@@ -18,7 +18,7 @@ import {
   conversationMembersViewHiddenAction,
   joinConversationViewHiddenAction
 } from "../../content/messenger/layout/LayoutActions";
-//import { SignalReceivedAction } from "pubnub-redux/dist/features/signal/SignalActions";
+import { SignalReceivedAction } from "pubnub-redux/dist/features/signal/SignalActions";
 // import {
 //   TypingIndicatorEnvelope,
 //   RemoveTypingIndicatorAction,
