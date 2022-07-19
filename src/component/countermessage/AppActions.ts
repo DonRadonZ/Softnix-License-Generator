@@ -1,4 +1,3 @@
-import { useDispatch as OriginalUseDispatch } from 'react-redux';
 import { focusOnConversationAction } from "../../content/messenger/currentConversation/currentConversationModel";
 import {
   MessageDraftUpdatedAction,
@@ -19,13 +18,13 @@ import {
   joinConversationViewHiddenAction
 } from "../../content/messenger/layout/LayoutActions";
 import { SignalReceivedAction } from "pubnub-redux/dist/features/signal/SignalActions";
-// import {
-//   TypingIndicatorEnvelope,
-//   RemoveTypingIndicatorAction,
-//   RemoveTypingIndicatorAllAction
-// } from "features/typingIndicator/typingIndicatorModel";
+import {
+  TypingIndicatorEnvelope,
+  RemoveTypingIndicatorAction,
+  RemoveTypingIndicatorAllAction
+} from "../../content/messenger/typingIndicator/typingIndicatorModel";
  import { MessageReceivedAction } from "pubnub-redux/dist/features/message/MessageActions";
-// import { MessageEnvelope } from "features/messages/messageModel";
+import { MessageEnvelope } from '../../content/messenger/messages/messageModel';
 
 // /**
 //  * AppActions is the union of all basic actions in this application.
@@ -41,8 +40,8 @@ export type AppActions =
   | focusOnConversationAction
   | logingInAction
   | loginSucceededAction
-   | MessageDraftUpdatedAction
-   | MessageDraftDiscardedAction
+  | MessageDraftUpdatedAction
+  | MessageDraftDiscardedAction
   | menuViewDisplayedAction
   | currentConversationViewDisplayedAction
   | conversationMembersViewDisplayedAction
@@ -51,7 +50,7 @@ export type AppActions =
   | currentConversationViewHiddenAction
   | conversationMembersViewHiddenAction
   | joinConversationViewHiddenAction
-  // | SignalReceivedAction<TypingIndicatorEnvelope>
-  // | MessageReceivedAction<MessageEnvelope>
-  // | RemoveTypingIndicatorAction
-  // | RemoveTypingIndicatorAllAction;
+  | SignalReceivedAction<TypingIndicatorEnvelope>
+  | MessageReceivedAction<MessageEnvelope>
+  | RemoveTypingIndicatorAction
+  | RemoveTypingIndicatorAllAction;

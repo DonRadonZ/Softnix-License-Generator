@@ -2,10 +2,10 @@ import { combineReducers } from "redux";
 
 import { currentConversationStateReducer } from "../../content/messenger/currentConversation/currentConversationModel";
 import { LayoutStateReducer } from "../../content/messenger/layout/LayoutReducer";
-// import { UsersReducer } from "features/users/userModel";
- import { AuthenticationStateReducer } from "../../content/authentication/login/authenticationModel";
- import { MessageStateReducer } from "../../content/messenger/message/messageModel";
-// import { TypingIndicatorStateReducer } from "features/typingIndicator/typingIndicatorModel";
+import { UsersReducer } from "../../content/messenger/users/userModel";
+import { AuthenticationStateReducer } from "../../content/authentication/login/authenticationModel";
+import { MessageStateReducer } from "../../content/messenger/messages/messageModel";
+import { TypingIndicatorStateReducer } from "../../content/messenger/typingIndicator/typingIndicatorModel";
 // import { conversationStateReducer } from "features/conversations/conversationModel";
  import { JoinedConversationsStateReducer } from "../../content/messenger/joinedConversations/joinedConversationModel";
  import { ConversationDraftStateReducer } from "../../content/messenger/joinedConversations/DraftModel";
@@ -21,17 +21,17 @@ import { LayoutStateReducer } from "../../content/messenger/layout/LayoutReducer
 const rootReducer = combineReducers({
    layout: LayoutStateReducer,
 //   networkStatus: NetworkStatusReducer,
-//   users: UsersReducer,
+    users: UsersReducer,
 //   conversations: conversationStateReducer,
    joinedConversations: JoinedConversationsStateReducer,
    drafts: ConversationDraftStateReducer,
 //   conversationMembers: ConversationMembersStateReducer,
 //   conversationMembersCount: ConversationMembersCountStateReducer,
 //   memberPresence: MemberPresenceReducer,
-  messages: MessageStateReducer,
-//   typingIndicators: TypingIndicatorStateReducer,
+   messages: MessageStateReducer,
+   typingIndicators: TypingIndicatorStateReducer,
    authentication: AuthenticationStateReducer,
-  currentConversation: currentConversationStateReducer,
+   currentConversation: currentConversationStateReducer,
 //   pagination: PaginationStateReducer
 });
 
