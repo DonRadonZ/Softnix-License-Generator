@@ -1,7 +1,7 @@
 import { AppState } from "../../../component/countermessage/storeTypes";
 import { AppActions } from "../../../component/countermessage/AppActions";
 import { createSelector } from "reselect";
-import { DraftMessage } from "../message/draft";
+import { DraftMessage } from "../messages/draft";
 
 export const MESSAGE_DRAFT_UPDATED = "MESSAGE_DRAFT_UPDATED";
 export const MESSAGE_DRAFT_DISCARDED = "MESSAGE_DRAFT_DISCARDED";
