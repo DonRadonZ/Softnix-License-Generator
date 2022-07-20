@@ -59,7 +59,7 @@ const GenerateNumberInput: FC<FormInputProps> = ({ name, ...otherProps }) => {
             variant='outlined'
             sx={{ mb: '1.5rem' }}
             error={!!errors[name]}
-            helperText={errors[name] ? errors[name].message : ''}
+            // helperText={errors[name] ? errors[name].message : ''}
           />
         )}
       />

@@ -17,8 +17,7 @@ import License from './content/datatable/licenselist/License';
 //Generate Form
 import Spareform from './content/license_generator/Spare';
 
-//Request Form
-import RegisterPage2 from './content/license_generator/Spare2'
+
 
  
  const App = () => {
@@ -31,7 +30,7 @@ import RegisterPage2 from './content/license_generator/Spare2'
           <Route path = "/Messenger" element={<License/>}/>
           <Route path = "/Contact" element={<License/>}/>
           <Route path = "/LicenseList" element={<License/>}/>
-          <Route path = "/RegisterPage2" element={<RegisterPage2/>}/>
+          {/* <Route path = "/RegisterPage2" element={<RegisterPage2/>}/> */}
           <Route path = "/Licensegenerator" element={<Spareform/>}/>
         </Routes>
         <Footer/>

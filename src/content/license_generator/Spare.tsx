@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
-import {Grid, FormGroup, FormHelperText, Box, Typography } from '@mui/material';
+import {Grid, FormLabel, FormHelperText, Box, Typography } from '@mui/material';
 import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
-import { object, string, TypeOf, boolean, date, z} from 'zod';
+import { object, string, TypeOf, number, z} from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import InputLabel from '@mui/material/InputLabel';
-import { FC } from 'react';
+//import { FC } from 'react';
 
 import { Theme,useTheme } from '@mui/material/styles';
 
@@ -23,9 +23,9 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
-import RequestInput from '../../component/textinput/generate/GenerateTextInput';
-// import LicenseTypeSelect from "../../component/textinput/generate/LicenseTypeSelect";
-import GenerateNumberInput from "../../component/textinput/generate/GenerateNumberInput";
+
+
+
 
 
 
@@ -110,7 +110,10 @@ const API = "http://192.168.10.170:3000/v1/api/slg";
           : theme.typography.fontWeightMedium,
     };
   }
-
+  const multi =  [
+    'true',
+    'false'
+  ];
 
   const generateSchema = object({
     certificate_no: string()
@@ -122,15 +125,14 @@ const API = "http://192.168.10.170:3000/v1/api/slg";
     type: z.enum(["SLG","LA"]),
     dashboard: string().nonempty('required to generate'),
     visualization: string().nonempty('required to generate'),
-    storage: z.enum(["20GB","50GB","100GB","200GB","500GB","1TB","2TB","5TB","UNLIMITED"]),
+    storage: z.enum(["20 GB","50 GB","100 GB","200 GB","500 GB","1 TB","2 TB","5 TB","UNLIMITED"]),
     expired: z.preprocess((arg) => {
       if (typeof arg == "string" || arg instanceof Date) return new Date(arg);
     }, z.date()),
-    multi: boolean( {
-      invalid_type_error: 'required to generate',
-    }),
+    multi: z.enum(['true', 'false'])
 
 });
+
 
  type GenerateInput = TypeOf<typeof generateSchema>;
 
@@ -157,7 +159,7 @@ const API = "http://192.168.10.170:3000/v1/api/slg";
 
   
 
-const GeneratePage:FC = () => {
+const GeneratePage = () => {
   // const theme = useTheme();
   
 
@@ -191,12 +193,14 @@ const GeneratePage:FC = () => {
   };
 
 
-    const[value, setvalue] = React.useState('True');
+    const[value, setvalue] = React.useState('');
+    const [error, setError] = React.useState(false);
+  const [helperText, setHelperText] = React.useState('Please Select One');
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>{
-      setvalue(event.target.value);
-
-     
+      setvalue((event.target as HTMLInputElement).value);
+      setHelperText('Require to generate');
+      setError(false);
     }
     
     // const controlProps = (item: string) => ({
@@ -266,28 +270,34 @@ const GeneratePage:FC = () => {
               onSubmit={handleSubmit(onSubmitHandler)}
               >
                   
-              <RequestInput
-                name='certificate_no'
+              <TextField
                 required
                 fullWidth
                 label='Certificate No' 
                 sx={{ mb: 2 }}
+                error={!!errors['certificate_no']}
+          helperText={errors['certificate_no'] ? errors['certificate_no'].message : ''}
+          {...register('certificate_no')}
                 />
               
-              <RequestInput
-                 name='customer_id'
+              <TextField
                  required
                  fullWidth
                  label='Customer ID'
                  sx={{ mb: 2 }}
+                 error={!!errors['customer_id']}
+                 helperText={errors['customer_id'] ? errors['customer_id'].message : ''}
+                 {...register('customer_id')}
                  />
               
-              <RequestInput
-                 name='end_customer_id'
+              <TextField
                  required
                  fullWidth
                  label='End Customer ID'
                  sx={{ mb: 2 }}
+                 error={!!errors['end_customer_id']}
+                 helperText={errors['end_customer_id'] ? errors['end_customer_id'].message : ''}
+                 {...register('end_customer_id')}
                  />
 
         <FormControl sx={{ mb: 2, width: 300 }}>
@@ -297,7 +307,6 @@ const GeneratePage:FC = () => {
             name = "type"
             required
             displayEmpty
-            value={TypeChoose}
             input={<OutlinedInput label="Type"/>}
             MenuProps={MenuProps}
             onChange={TypehandleChange}
@@ -315,20 +324,24 @@ const GeneratePage:FC = () => {
           </Select>
         </FormControl>
 
-              <RequestInput
-                 name='activate'
+              <TextField
                  required
                  fullWidth
                  label='Activate'
                  sx={{ mb: 2 }}
+                 error={!!errors['activate']}
+                 helperText={errors['activate'] ? errors['activate'].message : ''}
+                 {...register('activate')}
                  />
 
-              <RequestInput
-                 name='serial_type'
+              <TextField
                  required
                  fullWidth
                  label='Serial Type'
                  sx={{ mb: 2 }}
+                 error={!!errors['serial_type']}
+                 helperText={errors['serial_type'] ? errors['serial_type'].message : ''}
+                 {...register('serial_type')}
                  />
               
 
@@ -339,7 +352,6 @@ const GeneratePage:FC = () => {
             name = "storage"
             displayEmpty
             required
-            value = {StorageChoose}
             input={<OutlinedInput label="Storage"/>}
             MenuProps={MenuProps}
             onChange={StoragehandleChange}
@@ -361,7 +373,7 @@ const GeneratePage:FC = () => {
 
           <FormControl sx={{ mb: 2, width: 300 }}>
       <Stack component="form" noValidate spacing={3}>
-        <RequestInput
+        <TextField
           id="expired"
           label="Expired Date"
           type="datetime-local"
@@ -369,53 +381,59 @@ const GeneratePage:FC = () => {
           InputLabelProps={{
             shrink: true,
           }}
-          {...register("expired", {required: true})}
+          error={!!errors['expired']}
+                 helperText={errors['expired'] ? errors['expired'].message : ''}
+          {...register("expired")}
         /> 
           </Stack>
           </FormControl>
               
 
-              <GenerateNumberInput
-                name='dashboard'
+              <TextField
                 required
                 fullWidth
                 label='Dashboard'
                 sx={{ mb: 2 }}
+                error={!!errors['dashboard']}
+                 helperText={errors['dashboard'] ? errors['dashboard'].message : ''}
+                 {...register('dashboard')}
                 />
 
-                <GenerateNumberInput
-                name='visualization'
+                <TextField
                 required
                 fullWidth
                 label='Visualization'
                 sx={{ mb: 2 }}
+                error={!!errors['visualization']}
+                 helperText={errors['visualization'] ? errors['visualization'].message : ''}
+                 {...register('visualization')}
                 />
                 
-              <FormGroup>
+                <FormControl sx={{ m: 3 }} error={error} variant="standard">
+                <FormLabel id="demo-error-radios">Multi Tenant</FormLabel>
                 <RadioGroup
                 row
-                aria-labelledby="demo-row-radio-buttons-group-label"
+                value = {value}
+                aria-labelledby="demo-error-radios"
                 name="multi"
-                value={value}
+                //value={value}
                 onChange={handleChange}
                 >
                 <FormControlLabel
                 value="true"
-                {...register("multi")}
-                  control={<Radio required />}
-                  label="True"
+                control={<Radio />}
+                label="True"
                 />
                 <FormControlLabel 
                 value="false"
-                {...register("multi")}
-                  control={<Radio required />}
-                  label= "False"
+                control={<Radio/>}
+                label= "False"
                 />
              </RadioGroup>
-             <FormHelperText error={!!errors['multi']}>
-                  {errors['multi'] ? errors['multi'].message : ''}
-                </FormHelperText>
-              </FormGroup>
+             <FormHelperText >
+                {helperText}
+              </FormHelperText>
+              </FormControl>
               <Button
                 variant='contained'
                 fullWidth
