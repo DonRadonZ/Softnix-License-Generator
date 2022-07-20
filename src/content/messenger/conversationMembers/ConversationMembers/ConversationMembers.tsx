@@ -1,31 +1,31 @@
 import React, { useEffect, useContext, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { createSelector } from "reselect";
-// import { getViewStates } from "features/layout/Selectors";
-// import { UsersIndexedById, getUsersById } from "features/users/userModel";
-// import {
+import { getViewStates } from "../../layout/Selectors";
+import { UsersIndexedById, getUsersById } from "../../users/userModel";
+import {
 //   getUsersByConversationId,
-//   MembershipHash
-// } from "../conversationMemberModel";
+  MembershipHash
+} from "../conversationMemberModel";
 // import {
 //   getPresenceByConversationId,
 //   ConversationPresence
 // } from "features/memberPresence/memberPresenceModel";
 // import { MemberDescription, UserFragment } from "../MemberDescription";
-// import { getCurrentConversationId } from "features/currentConversation/currentConversationModel";
+import { getCurrentConversationId } from "../../currentConversation/currentConversationModel";
 
 // import { Heading, Icon, Icons } from "foundations/components/presentation";
 // import { Avatar } from "foundations/components/chat";
-// import {
-//   ScrollView,
-//   Drawer,
-//   StyledBox,
-//   FlexRow
-// } from "foundations/components/layout";
+import {
+  //ScrollView,
+  //Drawer,
+  StyledBox,
+  FlexRow
+} from "../../foundations/component/layout/Index";
 import { fetchChannelMembers, fetchHereNow } from "pubnub-redux";
-// import { usePubNub } from "pubnub-react";
+import { usePubNub } from "pubnub-react";
 // import { conversationMembersViewHidden } from "features/layout/LayoutActions";
-// import { ThemeContext } from "styled-components";
+import { ThemeContext } from "styled-components";
 // import { getLoggedInUserId } from "features/authentication/authenticationModel";
 // import { getUniqueColor } from "foundations/utilities";
 // import { getCurrentConversationDescription } from "features/currentConversation/Header";

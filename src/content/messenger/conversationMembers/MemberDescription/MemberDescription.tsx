@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-// import { ThemeContext } from "styled-components";
+import { ThemeContext } from "styled-components";
 // import useHover from "foundations/hooks/useHover";
 // import { Icon, Icons, Title } from "foundations/components/presentation";
 // import { Avatar, AvatarVariants } from "foundations/components/chat";
