@@ -2107,9 +2107,9 @@
     loader-utils "^2.0.0"
 
 "@tanstack/query-core@^4.0.0-beta.1":
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-4.0.5.tgz#70c7275a9f1fbc8e6520d895991f9bace0fd5bb8"
-  integrity sha512-QOJ2gLbwlf8p0487pMey6vv8EF5X2ib1zINayaD7mb9/LibUtXmZ12uJgTqcnjgNY/4tWZn5qJnEk2ePG5AVGA==
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-4.0.8.tgz#75f350817936e13ba68b5bf605dce141a26dd4ad"
+  integrity sha512-NTjRc/qWlUx+76NCYiwqTYfJw2xIzSilI5w/F1QzE140dNUBlUl+72CbX0cIdJuTYGOD0W9x5xqZ+JcNAOIJ1A==
 
 "@testing-library/dom@^8.5.0":
   version "8.16.0"
@@ -4490,9 +4490,9 @@ ejs@^3.1.6:
     jake "^10.8.5"
 
 electron-to-chromium@^1.4.188:
-  version "1.4.195"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.195.tgz#139b2d95a42a3f17df217589723a1deac71d1473"
-  integrity sha512-vefjEh0sk871xNmR5whJf9TEngX+KTKS3hOHpjoMpauKkwlGwtMz1H8IaIjAT/GNnX0TbGwAdmVoXCAzXf+PPg==
+  version "1.4.196"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.196.tgz#e18cdc5c1c2c2ebf78da237d0c374cc3b244d4cb"
+  integrity sha512-uxMa/Dt7PQsLBVXwH+t6JvpHJnrsYBaxWKi/J6HE+/nBtoHENhwBoNkgkm226/Kfxeg0z1eMQLBRPPKcDH8xWA==
 
 emittery@^0.10.2:
   version "0.10.2"
