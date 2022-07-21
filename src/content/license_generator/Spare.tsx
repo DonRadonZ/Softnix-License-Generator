@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect } from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import {Grid, FormLabel, FormHelperText, Box, Typography } from '@mui/material';
 import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
 import { object, string, TypeOf, z} from 'zod';
@@ -23,6 +23,8 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 
 
@@ -30,7 +32,7 @@ import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 
 
 
-const API = "http://192.168.10.170:3000/v1/api/slg";
+//const API = "http://192.168.10.170:3000/v1/api/slg";
 
 
 
@@ -123,9 +125,7 @@ const API = "http://192.168.10.170:3000/v1/api/slg";
     dashboard: string().nonempty('required to generate'),
     visualization: string().nonempty('required to generate'),
     storage: z.enum(["20GB","50GB","100GB","200GB","500 GB","1TB","2TB","5TB","UNLIMITED"]),
-    expired: z.preprocess((arg) => {
-      if (typeof arg == "string" || arg instanceof Date) return new Date(arg);
-    }, z.date()),
+    expired: z.date(),
     multi: z.enum(['true', 'false'])
 
 });
@@ -180,6 +180,9 @@ const GeneratePage = () => {
   const [timevalue, setTimevalue] = React.useState<Date | null>(
     new Date('2018-01-01T00:00:00.00Z'),
   );
+  const ExpirehandleChange = (newValue: Date | null) => {
+    setTimevalue(newValue);
+  };
 
   const [StorageChoose, setStorageChoose] = React.useState<string[]>([]);
 
@@ -372,23 +375,19 @@ const GeneratePage = () => {
 
 
 
-          <FormControl sx={{ mb: 2, width: 300 }}>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Stack component="form" noValidate spacing={3}>
-        <TextField
-          id="expired"
-          //value = {timevalue}
+        <DateTimePicker
+          value = {timevalue}
           label="Expired Date"
-          type="datetime-local"
-          sx={{ width: 250 }}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          error={!!errors['expired']}
-                 helperText={errors['expired'] ? errors['expired'].message : ''}
-          {...register("expired")}
+          onChange={ExpirehandleChange}
+          renderInput={(params) => <TextField {...params} />}
+          // error={!!errors['expired']}
+          //        helperText={errors['expired'] ? errors['expired'].message : ''}
+          // {...register("expired")}
         /> 
           </Stack>
-          </FormControl>
+          </LocalizationProvider>
               
 
               <TextField
