@@ -10,9 +10,9 @@ import { conversationStateReducer } from "../../content/messenger/conversations/
  import { JoinedConversationsStateReducer } from "../../content/messenger/joinedConversations/joinedConversationModel";
  import { ConversationDraftStateReducer } from "../../content/messenger/joinedConversations/DraftModel";
 // import { ConversationMembersStateReducer } from "features/conversationMembers/conversationMemberModel";
-// import { ConversationMembersCountStateReducer } from "features/conversationMembers/conversationMemberCountModel";
+import { ConversationMembersCountStateReducer } from "../../content/messenger/conversationMembers/conversationMemberCountModel";
 // import { NetworkStatusReducer } from "features/currentUser/networkStatusModel";
-// import { MemberPresenceReducer } from "features/memberPresence/memberPresenceModel";
+import { MemberPresenceReducer } from "../../content/messenger/memberPresence/memberPresenceModel";
 // import { PaginationStateReducer } from "features/pagination/PaginationReducer";
 
 /**
@@ -26,8 +26,8 @@ const rootReducer = combineReducers({
    joinedConversations: JoinedConversationsStateReducer,
    drafts: ConversationDraftStateReducer,
 //   conversationMembers: ConversationMembersStateReducer,
-//   conversationMembersCount: ConversationMembersCountStateReducer,
-//   memberPresence: MemberPresenceReducer,
+   conversationMembersCount: ConversationMembersCountStateReducer,
+   memberPresence: MemberPresenceReducer,
    messages: MessageStateReducer,
    typingIndicators: TypingIndicatorStateReducer,
    authentication: AuthenticationStateReducer,
