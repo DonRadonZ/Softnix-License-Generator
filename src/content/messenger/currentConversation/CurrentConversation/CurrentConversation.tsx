@@ -1,7 +1,7 @@
 import React from "react";
-// import { Header } from "../Header";
+//import { Header } from "../Header";
 // import { MessageList } from "../MessageList";
-// import { MessageInput } from "../MessageInput";
+//import { MessageInput } from "../MessageInput";
 // import { TypingIndicatorDisplay } from "features/typingIndicator/TypingIndicatorDisplay";
 // import { FlexColumn } from "foundations/components/layout";
 

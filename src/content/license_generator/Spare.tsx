@@ -415,8 +415,7 @@ const GeneratePage = () => {
                 row
                 value = {value}
                 aria-labelledby="demo-error-radios"
-                name="multi"
-                //value={value}
+                {...register('multi')}
                 onChange={handleChange}
                 >
                 <FormControlLabel
