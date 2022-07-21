@@ -1,6 +1,6 @@
 import React from "react";
-// import {Menu} from "../menu/Menu";
-// import { CurrentConversation } from "features/currentConversation/CurrentConversation/CurrentConversation";
+import {Menu} from "../menu/Menu";
+//import { CurrentConversation } from "../currentConversation/CurrentConversation/CurrentConversation";
 // import { ConversationMembers } from "features/conversationMembers/ConversationMembers/ConversationMembers";
 // import { JoinConversationDialog } from "features/joinedConversations/JoinConversationDialog/JoinConversationDialog";
 import { FlexRow } from "../foundations/component/layout/flex-row/flex-row";
