@@ -178,7 +178,7 @@ const GeneratePage = () => {
   };
 
   const [timevalue, setTimevalue] = React.useState<Date | null>(
-    new Date(''),
+    new Date(),
   );
   const ExpirehandleChange = (newValue: Date | null) => {
     setTimevalue(newValue);
@@ -379,13 +379,16 @@ const GeneratePage = () => {
       <Stack component="form" noValidate spacing={3}>
         <DateTimePicker
           {...register("expired")}
-          renderInput={(params) => <TextField {...params} />}
+          onChange={ExpirehandleChange}
           value = {timevalue}
           label="Expired Date"
-          onChange={ExpirehandleChange}
-          // error={!!errors['expired']}
-          //        helperText={errors['expired'] ? errors['expired'].message : ''}
-          
+          renderInput={(params) => 
+          <TextField {...params} 
+          error={!!errors['expired']}
+          helperText={errors['expired'] ? errors['expired'].message : ''}
+          />}
+          //helperText={errors['expired'] ? errors['expired'].message : ''}
+          //error={!!errors['expired']}   
         /> 
           </Stack>
           </LocalizationProvider>
