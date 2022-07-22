@@ -6,7 +6,7 @@ import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
 import { object, string, TypeOf, z} from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import InputLabel from '@mui/material/InputLabel';
-//import { FC } from 'react';
+
 
 import { Theme,useTheme } from '@mui/material/styles';
 
@@ -17,7 +17,6 @@ import RadioGroup from '@mui/material/RadioGroup';
 import Radio from '@mui/material/Radio';
 import Button from '@mui/material/Button';
 import FormControlLabel from '@mui/material/FormControlLabel';
-//import FormLabel from '@mui/material/FormLabel';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -126,8 +125,8 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
     visualization: string().nonempty('required to generate'),
     storage: z.enum(["20GB","50GB","100GB","200GB","500 GB","1TB","2TB","5TB","UNLIMITED"]),
     expired: z.preprocess((a) => new Date(z.string().parse(a)), z.date()),
+    // expired: z.date(),
     multi: z.enum(['true', 'false'])
-
 });
 
 
@@ -203,7 +202,7 @@ const GeneratePage = () => {
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>{
       setvalue((event.target as HTMLInputElement).value);
-      setHelperText('Require to generate');
+      setHelperText('Require to generate')
       setError(false);
     }
     
