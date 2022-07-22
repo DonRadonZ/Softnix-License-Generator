@@ -125,7 +125,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
     dashboard: string().nonempty('required to generate'),
     visualization: string().nonempty('required to generate'),
     storage: z.enum(["20GB","50GB","100GB","200GB","500 GB","1TB","2TB","5TB","UNLIMITED"]),
-    expired: z.date(),
+    expired: z.preprocess((a) => new Date(z.string().parse(a)), z.date()),
     multi: z.enum(['true', 'false'])
 
 });
@@ -379,12 +379,12 @@ const GeneratePage = () => {
       <Stack component="form" noValidate spacing={3}>
         <DateTimePicker
           {...register("expired")}
+          renderInput={(params) => <TextField {...params} />}
           value = {timevalue}
           label="Expired Date"
           onChange={ExpirehandleChange}
-          renderInput={(params) => <TextField {...params} />}
-          // error={!!errors['expired']}
-          //        helperText={errors['expired'] ? errors['expired'].message : ''}
+          error={!!errors['expired']}
+                 helperText={errors['expired'] ? errors['expired'].message : ''}
           
         /> 
           </Stack>
