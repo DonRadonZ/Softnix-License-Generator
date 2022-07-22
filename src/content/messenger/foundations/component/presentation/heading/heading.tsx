@@ -10,7 +10,7 @@ export enum HeadingSizes {
     HUGE = "huge"
 }
 
-interface HeadingProps extends TypographyProps {
+export interface HeadingProps extends TypographyProps {
     /** Specify a Button variant */
     variant?: HeadingVariants | false;
      /** Background color when component is hovered */
@@ -37,6 +37,7 @@ export const Heading = Styled.h3<HeadingProps>`
   font-size: ${p => p.theme.fontSizes.medium};
   font-weight: ${p => p.theme.fontWeights.medium};
   ${props => props.variant === HeadingVariants.INVERSE && InverseHeading}
+
   ${props => props.size === HeadingSizes.BIG && BigHeading}
   ${props => props.size === HeadingSizes.HUGE && HugeHeading}
   ${typography}
