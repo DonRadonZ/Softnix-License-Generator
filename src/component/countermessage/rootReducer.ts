@@ -11,7 +11,7 @@ import { conversationStateReducer } from "../../content/messenger/conversations/
  import { ConversationDraftStateReducer } from "../../content/messenger/joinedConversations/DraftModel";
 // import { ConversationMembersStateReducer } from "features/conversationMembers/conversationMemberModel";
 import { ConversationMembersCountStateReducer } from "../../content/messenger/conversationMembers/conversationMemberCountModel";
-// import { NetworkStatusReducer } from "features/currentUser/networkStatusModel";
+import { NetworkStatusReducer } from "../../content/messenger/currentUser/networkStatusModel";
 import { MemberPresenceReducer } from "../../content/messenger/memberPresence/memberPresenceModel";
 // import { PaginationStateReducer } from "features/pagination/PaginationReducer";
 
@@ -20,7 +20,7 @@ import { MemberPresenceReducer } from "../../content/messenger/memberPresence/me
  */
 const rootReducer = combineReducers({
    layout: LayoutStateReducer,
-//   networkStatus: NetworkStatusReducer,
+   networkStatus: NetworkStatusReducer,
    users: UsersReducer,
    conversations: conversationStateReducer,
    joinedConversations: JoinedConversationsStateReducer,
