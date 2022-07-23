@@ -10,7 +10,7 @@ export enum HeadingSizes {
     HUGE = "huge"
 }
 
-interface HeadingProps extends TypographyProps {
+export interface HeadingProps extends TypographyProps {
     /** Specify a Button variant */
     variant?: HeadingVariants | false;
      /** Background color when component is hovered */
