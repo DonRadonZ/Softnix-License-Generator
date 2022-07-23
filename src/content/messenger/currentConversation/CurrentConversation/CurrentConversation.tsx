@@ -3,7 +3,7 @@ import React from "react";
 // import { MessageList } from "../MessageList";
 //import { MessageInput } from "../MessageInput";
 // import { TypingIndicatorDisplay } from "features/typingIndicator/TypingIndicatorDisplay";
-// import { FlexColumn } from "foundations/components/layout";
+import { FlexColumn } from "../../foundations/component/layout/flex-column/flex-column";
 
 // const CurrentConversation = () => {
 //     return(

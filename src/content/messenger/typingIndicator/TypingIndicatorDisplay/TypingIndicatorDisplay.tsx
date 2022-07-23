@@ -72,7 +72,7 @@ import { createSelector } from "reselect";
     }
   );
   
-  // const TypingLabel: FunctionComponent = ({children}) => {
+  // const TypingLabel: FunctionComponent : FC({children}) => {
   //   return (
   //     <StyledBox px="6" paddingBottom="1">
   //       <Label size={LabelSizes.SMALL} variant={LabelVariants.DARK}>
