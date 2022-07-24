@@ -3,7 +3,12 @@ import { useEffect } from 'react';
 //import axios from 'axios';
 import {Grid, FormLabel, FormHelperText, Box, Typography } from '@mui/material';
 import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
-import { object, string, TypeOf, z} from 'zod';
+import { object, 
+  string, 
+  TypeOf,
+  //number, 
+  z
+} from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import InputLabel from '@mui/material/InputLabel';
 
@@ -24,7 +29,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-
+//import isISODate from "is-iso-date";
 
 
 
@@ -397,6 +402,7 @@ const GeneratePage = () => {
                 required
                 fullWidth
                 label='Dashboard'
+                type="number"
                 sx={{ mb: 2 }}
                 error={!!errors['dashboard']}
                  helperText={errors['dashboard'] ? errors['dashboard'].message : ''}
@@ -407,6 +413,7 @@ const GeneratePage = () => {
                 required
                 fullWidth
                 label='Visualization'
+                type="number"
                 sx={{ mb: 2 }}
                 error={!!errors['visualization']}
                  helperText={errors['visualization'] ? errors['visualization'].message : ''}
