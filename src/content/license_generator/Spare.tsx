@@ -149,7 +149,7 @@ const API = "http://192.168.10.170:3000/v1/api/slg";
 //   visualization: "",
 //   storage: [],
 //   expired: new Date(),
-//   multi: true};
+//   multi: []};
 
 
 
@@ -246,7 +246,7 @@ const GeneratePage = () => {
     }, [isSubmitSuccessful]);
 
     const onSubmitHandler: SubmitHandler<GenerateInput> = (generate: GenerateInput ) => {
-        axios.post(API,JSON.stringify(generateSchema))
+        axios.post(API,JSON.stringify(generate,null,2))
          .then(res =>{
              console.log(res);
              console.log(res.data);
@@ -388,9 +388,10 @@ const GeneratePage = () => {
           {...register("expired")}
           onChange={ExpirehandleChange}
           value = {timevalue}
+          disablePast
           label="Expired Date"
-          //minDate={new Date()}
-          inputFormat="yyyy-MM-dd hh:mm:ss"
+          minDate={new Date()}
+          inputFormat= "yyyy-MM-dd HH:mm:ss"
           renderInput={(params) => 
           <TextField {...params} 
           error={!!errors['expired']}
