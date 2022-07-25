@@ -12,7 +12,7 @@ import DashboardContent from './content/dashboard/Dashboard';
 import License from './content/datatable/licenselist/License';
 
 
-//import LicenseRequest from './content/datatable/licenserequestlist/LicenseRequestList';
+import LicenseRequest from './content/datatable/licenserequestlist/LicenseRequestList';
 
 //Generate Form
 import Spareform from './content/license_generator/Spare';
@@ -30,6 +30,7 @@ import Spareform from './content/license_generator/Spare';
           <Route path = "/Messenger" element={<License/>}/>
           <Route path = "/Contact" element={<License/>}/>
           <Route path = "/LicenseList" element={<License/>}/>
+          <Route path = "/LicenseRequest" element={<LicenseRequest/>}/>
           {/* <Route path = "/RegisterPage2" element={<RegisterPage2/>}/> */}
           <Route path = "/Licensegenerator" element={<Spareform/>}/>
         </Routes>
