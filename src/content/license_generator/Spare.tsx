@@ -246,12 +246,12 @@ const GeneratePage = () => {
     }, [isSubmitSuccessful]);
 
     const onSubmitHandler: SubmitHandler<GenerateInput> = (generate: GenerateInput ) => {
-        axios.post(API,JSON.stringify(generate,null,2))
-         .then(res =>{
-             console.log(res);
-             console.log(res.data);
-
-      })
+        // axios.post(API,JSON.stringify(generate,null,2))
+        //  .then(res =>{
+        //      console.log(res);
+        //      console.log(res.data);
+          console.log(generate)
+      // })
     }
     console.log(errors);
 
