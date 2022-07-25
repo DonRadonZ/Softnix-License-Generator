@@ -56,7 +56,7 @@ import Sidebar from '../sidebar/Index';
  function Header() {
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 0.5 }}>
       <AppBar position="static">
         <Toolbar>
           <IconButton
