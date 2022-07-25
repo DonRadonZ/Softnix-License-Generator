@@ -1,6 +1,6 @@
 import * as React from 'react';
 // import { styled, useTheme } from '@mui/material/styles';
-import { NavLink as  useLinkClickHandler } from 'react-router-dom';
+// import { NavLink as  useLinkClickHandler } from 'react-router-dom';
 import Link from '@mui/material/Link';
 
 
@@ -70,7 +70,7 @@ function SidebarMenu(){
        <ListItemIcon>
         <FactCheckIcon/>
        </ListItemIcon>
-       <Link href ="/RegisterPage2" underline="none">
+       <Link href ="/LicenseRequest" underline="none">
        <ListItemText primary="License Request" />
        </Link>
        </ListItemButton>
