@@ -46,9 +46,9 @@ async function getLicenses(): Promise<LicenseList[]> {
   // }
 }
 // Generate Order Data
-function preventDefault(event: React.MouseEvent) {
-  event.preventDefault();
-}
+// function preventDefault(event: React.MouseEvent) {
+//   event.preventDefault();
+// }
 
 function License() {
   const [licenses, setLicenses] = useState<[] | LicenseList[]>([]);

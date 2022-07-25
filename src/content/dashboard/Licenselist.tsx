@@ -7,6 +7,8 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+// import TableContainer from '@mui/material/TableContainer';
+// import TablePagination from '@mui/material/TablePagination';
 import Title from './Title';
 
 
@@ -50,17 +52,17 @@ function preventDefault(event: React.MouseEvent) {
 
 export default function Orders() {
   const [licenses, setLicenses] = useState<[] | LicenseList[]>([]);
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [page]  = React.useState(0);
+  const [rowsPerPage] = React.useState(5);
 
-  const handleChangePage = (event: unknown, newPage: number) => {
-    setPage(newPage);
-  };
+  // const handleChangePage = (event: unknown, newPage: number) => {
+  //   setPage(newPage);
+  // };
 
-  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
+  // const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setRowsPerPage(+event.target.value);
+  //   setPage(0);
+  // };
   useEffect(() => {
     (async () => {
       const licenses = await getLicenses();
@@ -83,7 +85,9 @@ export default function Orders() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {licenses.map((license) => (
+          {licenses
+          .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+          .map((license) => (
             <TableRow key={license.id}>
               <TableCell>{license.customer_id}</TableCell>
               <TableCell>{license.certificate_no}</TableCell>
@@ -95,16 +99,16 @@ export default function Orders() {
         </TableBody>
       </Table>
       {/* <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
+        rowsPerPageOptions={[5, 25, 100]}
         component="div"
-        count={rows.length}
+        count={licenses.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       /> */}
       <Link color="primary" href="#" onClick={preventDefault} sx={{ mt: 3 }}>
-        See more orders
+        See more License
       </Link>
     </React.Fragment>
   );

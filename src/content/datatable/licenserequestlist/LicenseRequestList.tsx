@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
+// import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
@@ -38,10 +38,10 @@ async function getRequest(): Promise<RequestList[]> {
   //   return [];
   // }
 }
-// Generate Order Data
-function preventDefault(event: React.MouseEvent) {
-  event.preventDefault();
-}
+// // Generate Order Data
+// function preventDefault(event: React.MouseEvent) {
+//   event.preventDefault();
+// }
 
 export default function License() {
   const [request, setRequest] = useState<[] | RequestList[]>([]);
@@ -75,13 +75,13 @@ export default function License() {
         <TableHead>
           <TableRow>
             <TableCell>Company</TableCell>
-            <TableCell>First Name</TableCell>
-            <TableCell>Last Name</TableCell>
+            {/* <TableCell>First Name</TableCell> */}
+            {/* <TableCell>Last Name</TableCell> */}
             <TableCell>Tel.</TableCell>
             <TableCell>Email</TableCell>
             <TableCell>Types</TableCell>
-            <TableCell>Amout</TableCell>
-            <TableCell>Description</TableCell>
+            <TableCell>Dashboard</TableCell>
+            <TableCell>Visualization</TableCell>
             <TableCell>Interaction</TableCell>
           </TableRow>
         </TableHead>
