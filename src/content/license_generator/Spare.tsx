@@ -6,7 +6,7 @@ import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
 import { object, 
   string, 
   TypeOf,
-  //number, 
+  //number,
   z
 } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -129,8 +129,8 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
     dashboard: string().nonempty('required to generate'),
     visualization: string().nonempty('required to generate'),
     storage: z.enum(["20GB","50GB","100GB","200GB","500 GB","1TB","2TB","5TB","UNLIMITED"]),
-    expired: z.preprocess((a) => new Date(z.string().parse(a)), z.date()),
-    // expired: z.date(),
+    //expired: z.preprocess((a) => new Date(z.string().parse(a)), z.date()),
+    expired: z.string(),
     multi: z.enum(['true', 'false'])
 });
 
@@ -182,7 +182,9 @@ const GeneratePage = () => {
   };
 
   const [timevalue, setTimevalue] = React.useState<Date | null>(
+    //new Date("YYYY-MM-DDTHH:MM:SSZ"),
     new Date(),
+
   );
   const ExpirehandleChange = (newValue: Date | null) => {
     setTimevalue(newValue);
@@ -386,6 +388,7 @@ const GeneratePage = () => {
           onChange={ExpirehandleChange}
           value = {timevalue}
           label="Expired Date"
+          inputFormat="YYYY-MM-DD HH:MM:SS"
           renderInput={(params) => 
           <TextField {...params} 
           error={!!errors['expired']}
