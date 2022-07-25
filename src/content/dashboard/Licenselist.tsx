@@ -107,7 +107,7 @@ export default function Orders() {
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       /> */}
-      <Link color="primary" href="#" onClick={preventDefault} sx={{ mt: 3 }}>
+      <Link color="primary" href="/License" onClick={preventDefault} sx={{ mt: 3 }}>
         See more License
       </Link>
     </React.Fragment>
