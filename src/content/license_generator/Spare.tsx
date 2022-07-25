@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect } from 'react';
-//import axios from 'axios';
+import axios from 'axios';
 import {Grid, FormLabel, FormHelperText, Box, Typography } from '@mui/material';
 import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
 import { object, 
@@ -36,7 +36,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 
 
-//const API = "http://192.168.10.170:3000/v1/api/slg";
+const API = "http://192.168.10.170:3000/v1/api/slg";
 
 
 
@@ -123,15 +123,15 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
     .nonempty('required to generate'),
     customer_id: string().nonempty('required to generate'),
     end_customer_id: string().nonempty('required to generate'),
+    type: z.enum(["SLG","LA"]),
     activate: string().nonempty('required to generate'),
     serial_type: string().nonempty('required to generate'),
-    type: z.enum(["SLG","LA"]),
+    storage: z.enum(["20GB","50GB","100GB","200GB","500GB","1TB","2TB","5TB","UNLIMITED"]),
+    expired: z.string(),
+    //expired: z.preprocess((a) => new Date(z.string().parse(a)), z.date()),
     dashboard: string().nonempty('required to generate'),
     visualization: string().nonempty('required to generate'),
-    storage: z.enum(["20GB","50GB","100GB","200GB","500 GB","1TB","2TB","5TB","UNLIMITED"]),
-    //expired: z.preprocess((a) => new Date(z.string().parse(a)), z.date()),
-    expired: z.string(),
-    multi: z.enum(['true', 'false'])
+    multi_tenant: z.enum(['true', 'false'])
 });
 
 
@@ -246,11 +246,12 @@ const GeneratePage = () => {
     }, [isSubmitSuccessful]);
 
     const onSubmitHandler: SubmitHandler<GenerateInput> = (generate: GenerateInput ) => {
-        // axios.post(API,generate)
-        // .then(res =>{
-             console.log(generate);
+        axios.post(API,JSON.stringify(generateSchema))
+         .then(res =>{
+             console.log(res);
+             console.log(res.data);
 
-      //})
+      })
     }
     console.log(errors);
 
@@ -388,7 +389,8 @@ const GeneratePage = () => {
           onChange={ExpirehandleChange}
           value = {timevalue}
           label="Expired Date"
-          inputFormat="YYYY-MM-DD HH:MM:SS"
+          //minDate={new Date()}
+          inputFormat="yyyy-MM-dd hh:mm:ss"
           renderInput={(params) => 
           <TextField {...params} 
           error={!!errors['expired']}
@@ -429,17 +431,17 @@ const GeneratePage = () => {
                 row
                 value = {value}
                 aria-labelledby="demo-error-radios"
-                {...register('multi')}
+                {...register('multi_tenant')}
                 onChange={handleChange}
                 >
                 <FormControlLabel
-                {...register("multi", { required: true })}
+                {...register("multi_tenant", { required: true })}
                 value="true"
                 control={<Radio />}
                 label="True"
                 />
                 <FormControlLabel 
-                {...register("multi", { required: true })}
+                {...register("multi_tenant", { required: true })}
                 value="false"
                 control={<Radio/>}
                 label= "False"
