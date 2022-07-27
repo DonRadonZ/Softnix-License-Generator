@@ -10,10 +10,10 @@ import { object,
   z
 } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+//import { useMutation } from '@tanstack/react-query';
 import InputLabel from '@mui/material/InputLabel';
 
 
-import { Theme,useTheme } from '@mui/material/styles';
 
 
 import Stack from '@mui/material/Stack';
@@ -39,6 +39,11 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 const API = "http://192.168.10.170:3000/v1/api/slg";
 
 
+// // Generate Order Data
+// function preventDefault(event: React.MouseEvent) {
+//   event.preventDefault();
+// }
+
 
 
   //Type Select
@@ -63,16 +68,15 @@ const API = "http://192.168.10.170:3000/v1/api/slg";
   const type = [
     'SLG',
     'LA'
-  
   ];
-  function getType(name: string, TypeChoose: string[], theme: Theme) {
-    return {
-      fontWeight:
-        TypeChoose.indexOf(name) === -1
-          ? theme.typography.fontWeightRegular
-          : theme.typography.fontWeightMedium,
-    };
-  }
+  // function getType(name: string, TypeChoose: string[], theme: Theme) {
+  //   return {
+  //     fontWeight:
+  //       TypeChoose.indexOf(name) === -1
+  //         ? theme.typography.fontWeightRegular
+  //         : theme.typography.fontWeightMedium,
+  //   };
+  // }
 
   // const StorageSchema = object({
   //   label: string(),
@@ -85,18 +89,7 @@ const API = "http://192.168.10.170:3000/v1/api/slg";
   
   
 
-  // const storageChoose:StorageSelect[] = [
-  //   {label:"20 GB", value:"20 GB"},
-  //   {label:"50 GB", value:"50 GB"},
-  //   {label:"100 GB", value:"100 GB"},
-  //   {label:"200 GB", value:"200 GB"},
-  //   {label:"500 GB", value:"500 GB"},
-  //   {label:"1 TB", value:"1 TB"},
-  //   {label:"2 TB", value:"2 TB"},
-  //   {label:"3 TB", value:"3 TB"},
-  //   {label:"Unlimited", value:"Unlimited"}
  
-  // ];
 
   const storage =  [
     '20GB',
@@ -109,25 +102,25 @@ const API = "http://192.168.10.170:3000/v1/api/slg";
     '3TB',
     'Unlimited'
   ];
-  function getStorage(name: string, StorageChoose: string[], theme: Theme) {
-    return {
-      fontWeight:
-      StorageChoose.indexOf(name) === -1
-          ? theme.typography.fontWeightRegular
-          : theme.typography.fontWeightMedium,
-    };
-  }
+  // function getStorage(name: string, StorageChoose: string[], theme: Theme) {
+  //   return {
+  //     fontWeight:
+  //     StorageChoose.indexOf(name) === -1
+  //         ? theme.typography.fontWeightRegular
+  //         : theme.typography.fontWeightMedium,
+  //   };
+  // }
   
   const generateSchema = object({
     certificate_no: string()
     .nonempty('required to generate'),
     customer_id: string().nonempty('required to generate'),
     end_customer_id: string().nonempty('required to generate'),
-    type: z.enum(["SLG","LA"]),
+    type: z.enum(['SLG','LA']),
     activate: string().nonempty('required to generate'),
     serial_type: string().nonempty('required to generate'),
-    storage: z.enum(["20GB","50GB","100GB","200GB","500GB","1TB","2TB","5TB","UNLIMITED"]),
-    expired: z.string(),
+    storage: z.enum(['20GB','50GB','100GB','200GB','500GB','1TB','2TB','5TB','UNLIMITED']),
+    expired: z.string().nonempty('required to generate'),
     //expired: z.preprocess((a) => new Date(z.string().parse(a)), z.date()),
     dashboard: string().nonempty('required to generate'),
     visualization: string().nonempty('required to generate'),
@@ -135,7 +128,7 @@ const API = "http://192.168.10.170:3000/v1/api/slg";
 });
 
 
- type GenerateInput = TypeOf<typeof generateSchema>;
+ export type GenerateInput = TypeOf<typeof generateSchema>;
 
 
 // const defaultValues: GenerateInput = {
@@ -165,50 +158,93 @@ const GeneratePage = () => {
   
 
   
-  const theme = useTheme();
+  //const theme = useTheme();
+
+  const [certificate_no, setCertificate_no]=  React.useState('')
+
+  const CertificatehandleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCertificate_no(event.target.value);
+  }
+
+  const [customer_id, setCustomer_id] =  React.useState('')
+
+  const CustomerhandleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCustomer_id(event.target.value);
+  }
+
+  const [end_customer_id, setEnd_Customer_id] =  React.useState('')
+
+  const EndCustomerhandleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEnd_Customer_id(event.target.value);
+  }
 
 
-  const [TypeChoose, setTypeChoose] = React.useState<string[]>([]);
+  const [activate,setActivate] = React.useState('')
+  const ActivatehandleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setActivate(event.target.value);
+  }
 
 
-  const TypehandleChange = (event: SelectChangeEvent<typeof TypeChoose>) => {
-    const {
-      target: { value },
-    } = event;
-    setTypeChoose(
+  const [serial_type,setSerial_Type] = React.useState('')
+
+  const SerialhandleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSerial_Type(event.target.value);
+  }
+
+ // const dashboard = React.useState('')
+
+  const [Type, setType] = React.useState('');
+  
+
+  const TypehandleChange = (event: SelectChangeEvent<typeof Type>) => {
+    setType(event.target.value as string);
       // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value,
-    );
+      
+
   };
 
-  const [timevalue, setTimevalue] = React.useState<Date | null>(
+  const [dashboard, setDashboard] = React.useState(0)
+  const DashboardhandleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setDashboard(event.target.valueAsNumber);
+      // On autofill we get a stringified value.
+      
+
+  };
+
+  
+
+  const [visualization, setVisualization] = React.useState(0)
+  const VisualizationhandleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setVisualization(event.target.valueAsNumber);
+      // On autofill we get a stringified value.
+      
+
+  };
+
+  const [expired, setExpired] = React.useState<Date | null>(
     //new Date("YYYY-MM-DDTHH:MM:SSZ"),
     new Date(),
 
   );
   const ExpirehandleChange = (newValue: Date | null) => {
-    setTimevalue(newValue);
+    setExpired(newValue);
   };
 
-  const [StorageChoose, setStorageChoose] = React.useState<string[]>([]);
+  const [Storage, setStorage] = React.useState('');
 
-  const StoragehandleChange = (event: SelectChangeEvent<typeof StorageChoose>) => {
-    const {
-      target: { value },
-    } = event;
-    setStorageChoose(
+  const StoragehandleChange = (event: SelectChangeEvent<typeof Storage>) => {
+    setStorage(event.target.value as string);
       // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value,
-    );
+  
   };
 
 
-    const[value, setvalue] = React.useState('');
+    const[multi, setmulti] = React.useState<boolean>();
     const [error, setError] = React.useState(false);
   const [helperText, setHelperText] = React.useState('');
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>{
-      setvalue((event.target as HTMLInputElement).value);
+      setmulti(event.target.checked);
       setHelperText('Require to generate')
       setError(false);
     }
@@ -245,15 +281,55 @@ const GeneratePage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isSubmitSuccessful]);
 
-    const onSubmitHandler: SubmitHandler<GenerateInput> = (generate: GenerateInput ) => {
-        // axios.post(API,JSON.stringify(generate,null,2))
-        //  .then(res =>{
-        //      console.log(res);
-        //      console.log(res.data);
-          console.log(generate)
-      // })
+    
+    const onSubmitHandler: SubmitHandler<GenerateInput> = async() => {
+      
+      // const data = {
+      //   certificate_no: "",
+      //   customer_id: "",
+      //   end_customer_id:"",
+      //   activate: "",
+      //   serial_type: "",
+      //   type:[],
+      //   dashboard: "",
+      //   visualization: "",
+      //   storage: [],
+      //   expired: "",
+      //   multi: []
+      // };
+      //GenerateInput.preventDefault();
+        await axios.post(API,{certificate_no:certificate_no,
+                                        customer_id:customer_id,
+                                        end_customer_id:end_customer_id,
+                                        type:Type,
+                                        activate:activate,
+                                        serial_type:serial_type,
+                                        storage:Storage,
+                                        expired:expired,
+                                        dashboard:dashboard,
+                                        visualization:visualization,
+                                        multi_tenant:multi
+                                        })
+        //axios.post(API,generate)
+         .then(res =>{
+             console.log(JSON.stringify(res,null,2));
+             console.log(res.data);
+      }) 
+      //console.log(JSON.stringify(,null,2))
     }
-    console.log(errors);
+    console.log(errors);    
+
+    // const onSubmitHandler: SubmitHandler<GenerateInput> = async(data) => {
+    //    //e.preventDefault();
+    //     await axios.post(API,{data})
+    //     //axios.post(API,generate)
+    //      .then(res =>{
+    //          console.log(JSON.stringify(res,null,2));
+    //          console.log(res.data);
+    //   }) 
+    //   console.log()
+    // }
+    // console.log(errors);
 
     // const handleReset = () => {
     //   reset(defaultValues);
@@ -282,33 +358,40 @@ const GeneratePage = () => {
               >
                   
               <TextField
+               {...register('certificate_no')}
+                id = 'certificate_no'
                 required
                 fullWidth
                 label='Certificate No' 
                 sx={{ mb: 2 }}
+                onChange = {CertificatehandleChange}
                 error={!!errors['certificate_no']}
-          helperText={errors['certificate_no'] ? errors['certificate_no'].message : ''}
-          {...register('certificate_no')}
+                 helperText={errors['certificate_no'] ? errors['certificate_no'].message : ''}
+          
                 />
               
               <TextField
+                {...register('customer_id')}
                  required
                  fullWidth
                  label='Customer ID'
                  sx={{ mb: 2 }}
+                 onChange = {CustomerhandleChange}
                  error={!!errors['customer_id']}
                  helperText={errors['customer_id'] ? errors['customer_id'].message : ''}
-                 {...register('customer_id')}
+                 
                  />
               
               <TextField
+                {...register('end_customer_id')}
                  required
                  fullWidth
                  label='End Customer ID'
                  sx={{ mb: 2 }}
+                 onChange = {EndCustomerhandleChange}
                  error={!!errors['end_customer_id']}
                  helperText={errors['end_customer_id'] ? errors['end_customer_id'].message : ''}
-                 {...register('end_customer_id')}
+                 
                  />
 
         <FormControl sx={{ mb: 2, width: 300 }}>
@@ -327,7 +410,7 @@ const GeneratePage = () => {
             {type.map((name) =>(
             <MenuItem key={name}
                       value={name}
-                      style={getType(name,TypeChoose, theme)}
+                    
                   >
                     {name}
             </MenuItem>
@@ -336,23 +419,27 @@ const GeneratePage = () => {
         </FormControl>
 
               <TextField
+                 {...register('activate')}
                  required
                  fullWidth
                  label='Activate'
                  sx={{ mb: 2 }}
+                 onChange = {ActivatehandleChange}
                  error={!!errors['activate']}
                  helperText={errors['activate'] ? errors['activate'].message : ''}
-                 {...register('activate')}
+                 
                  />
 
               <TextField
+                 {...register('serial_type')}
                  required
                  fullWidth
                  label='Serial Type'
                  sx={{ mb: 2 }}
+                 onChange = {SerialhandleChange}
                  error={!!errors['serial_type']}
                  helperText={errors['serial_type'] ? errors['serial_type'].message : ''}
-                 {...register('serial_type')}
+                 
                  />
               
 
@@ -371,7 +458,6 @@ const GeneratePage = () => {
             {storage.map((name) =>(
             <MenuItem key={name}
                       value={name}
-                      style={getStorage(name,StorageChoose, theme)}
                   >
                     {name}
             </MenuItem>
@@ -387,11 +473,11 @@ const GeneratePage = () => {
         <DateTimePicker
           {...register("expired")}
           onChange={ExpirehandleChange}
-          value = {timevalue}
+          value = {expired}
           disablePast
           label="Expired Date"
           minDate={new Date()}
-          inputFormat= "yyyy-MM-dd HH:mm:ss"
+          inputFormat = "yyyy/MM/dd hh:mm:ss"
           renderInput={(params) => 
           <TextField {...params} 
           error={!!errors['expired']}
@@ -405,32 +491,37 @@ const GeneratePage = () => {
           </FormControl>  
 
               <TextField
+              {...register('dashboard')}
+                inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
                 required
                 fullWidth
                 label='Dashboard'
                 type="number"
                 sx={{ mb: 2 }}
+                onChange = {DashboardhandleChange}
                 error={!!errors['dashboard']}
-                 helperText={errors['dashboard'] ? errors['dashboard'].message : ''}
-                 {...register('dashboard')}
+                 //helperText={errors['dashboard'] ? errors['dashboard'].message : ''}
+                 
                 />
 
                 <TextField
+                {...register('visualization')}
                 required
                 fullWidth
                 label='Visualization'
                 type="number"
                 sx={{ mb: 2 }}
+                onChange = {VisualizationhandleChange}
                 error={!!errors['visualization']}
                  helperText={errors['visualization'] ? errors['visualization'].message : ''}
-                 {...register('visualization')}
+                 
                 />
                 
                 <FormControl sx={{ m: 3 }} error={error} variant="standard">
                 <FormLabel id="demo-error-radios">Multi Tenant</FormLabel>
                 <RadioGroup
                 row
-                value = {value}
+                value = {multi}
                 aria-labelledby="demo-error-radios"
                 {...register('multi_tenant')}
                 onChange={handleChange}
