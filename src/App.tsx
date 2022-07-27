@@ -11,7 +11,7 @@ import DashboardContent from './content/dashboard/Dashboard';
 //LicenseSite
 import License from './content/datatable/licenselist/License';
 
-
+//LicenseRequest
 import LicenseRequest from './content/datatable/licenserequestlist/LicenseRequestList';
 
 //Generate Form
