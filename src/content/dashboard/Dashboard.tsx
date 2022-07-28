@@ -21,7 +21,7 @@ function DashboardContent() {
   return (
     <ThemeProvider theme={mdTheme} >
       <Box sx={{ display: 'flex' }}>
-            <Grid container spacing={3} my={3} mx={37}>
+            <Grid container spacing={3} my={3} mx={30}>
               {/* View_SLG */}
               <Grid item  >
                 <Paper
@@ -30,7 +30,7 @@ function DashboardContent() {
                     display: 'flex',
                     flexDirection: 'column',
                     height: 240,
-                    width: 300
+                    width: 250
                   }}
                 >
                   {/* Type LA */}
@@ -45,7 +45,7 @@ function DashboardContent() {
                     display: 'flex',
                     flexDirection: 'column',
                     height: 240,
-                    width: 300
+                    width: 250
                   }}
                 >
                   <Typela/>
@@ -64,7 +64,7 @@ function DashboardContent() {
                     display: 'flex',
                     flexDirection: 'column',
                     height: 240,
-                    width: 300
+                    width: 250
                   }}
                 >
                   <Request />
@@ -78,7 +78,7 @@ function DashboardContent() {
                     display: 'flex',
                     flexDirection: 'column',
                     height: 240,
-                    width: 300
+                    width: 250
                   }}
                 >
                   <Summary />
@@ -86,7 +86,7 @@ function DashboardContent() {
               </Grid>
               {/* License List */}
               <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column', width:1270 }}>
+                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column', width:1250 }}>
                   <License />
                 </Paper>
               </Grid>
