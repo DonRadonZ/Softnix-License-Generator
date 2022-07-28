@@ -4,7 +4,7 @@
  import { getConversationsByUserId } from "../../messenger/joinedConversations/joinedConversationModel";
 
 export const login = (uuid: string): ThunkAction<Promise<void>> => {
-  return (dispatch, getState, context) => {
+  return async (dispatch, getState, context) => {
     dispatch(loggingIn());
 
     // Show the login screen for a minimum amount of time as a splash screen
@@ -49,8 +49,7 @@ export const login = (uuid: string): ThunkAction<Promise<void>> => {
         });
       });
 
-    return Promise.all([isLoginSuccessful]).then(() => {
-      dispatch(loginSucceeded({ loggedInUserId: uuid }));
-    });
+    await Promise.all([isLoginSuccessful]);
+    dispatch(loginSucceeded({ loggedInUserId: uuid }));
   };
 };
