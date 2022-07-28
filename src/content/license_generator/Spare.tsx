@@ -30,7 +30,6 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { isStringObject } from 'util/types';
 //import isISODate from "is-iso-date";
 
 
@@ -315,7 +314,7 @@ const GeneratePage = () => {
         //axios.post(API,generate)
          .then(res =>{
              console.log(JSON.stringify(res,null,2));
-             console.log(res.data);
+             alert('success');
       }) 
       //console.log(JSON.stringify(,null,2))
     }
@@ -419,7 +418,7 @@ const GeneratePage = () => {
             ))}
           </Select>
         </FormControl>
-
+              
               <TextField
                  {...register('activate')}
                  required
@@ -431,6 +430,7 @@ const GeneratePage = () => {
                  helperText={errors['activate'] ? errors['activate'].message : ''}
                  
                  />
+                 
 
               <TextField
                  {...register('serial_type')}
@@ -480,7 +480,7 @@ const GeneratePage = () => {
           label="Expired Date"
           minDate={new Date()}
           ampm = {false}
-           inputFormat = 'yyyy-MM-dd HH:mm'
+           inputFormat = 'yyyy-MM-dd HH:mm:ss'
           renderInput={(params) => 
           <TextField {...params} 
           error={!!errors['expired']}
@@ -493,20 +493,22 @@ const GeneratePage = () => {
           </LocalizationProvider>
           </FormControl>  
 
+          <FormControl sx={{ mb: 2, width: 300}}>
               <TextField
               {...register('dashboard')}
                 inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+
                 required
                 fullWidth
                 label='Dashboard'
                 type="number"
-                sx={{ mb: 2 }}
+                sx={{ mb: 1 }}
                 onChange = {DashboardhandleChange}
                 error={!!errors['dashboard']}
-                 //helperText={errors['dashboard'] ? errors['dashboard'].message : ''}
-                 
+                 helperText={errors['dashboard'] ? errors['dashboard'].message : ''}
+                
                 />
-
+               
                 <TextField
                 {...register('visualization')}
                 required
@@ -519,8 +521,9 @@ const GeneratePage = () => {
                  helperText={errors['visualization'] ? errors['visualization'].message : ''}
                  
                 />
+                </FormControl>
                 
-                <FormControl sx={{ m: 3 }} error={error} variant="standard">
+                <FormControl sx={{ m: 1}} error={error} variant="standard">
                 <FormLabel id="demo-error-radios">Multi Tenant</FormLabel>
                 <RadioGroup
                 row

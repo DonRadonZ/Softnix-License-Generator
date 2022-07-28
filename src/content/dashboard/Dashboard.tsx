@@ -19,17 +19,18 @@ const mdTheme = createTheme();
 
 function DashboardContent() {
   return (
-    <ThemeProvider theme={mdTheme}>
+    <ThemeProvider theme={mdTheme} >
       <Box sx={{ display: 'flex' }}>
-            <Grid container spacing={3}>
+            <Grid container spacing={3} my={3} mx={37}>
               {/* View_SLG */}
-              <Grid item xs={12} md={4} lg={3} >
+              <Grid item  >
                 <Paper
                   sx={{
                     p: 2,
                     display: 'flex',
                     flexDirection: 'column',
                     height: 240,
+                    width: 300
                   }}
                 >
                   {/* Type LA */}
@@ -37,13 +38,14 @@ function DashboardContent() {
                 </Paper>
               </Grid>
               {/* View_LA */}
-              <Grid item xs={12} md={4} lg={3} >
+              <Grid item  >
                 <Paper
                   sx={{
                     p: 2,
                     display: 'flex',
                     flexDirection: 'column',
                     height: 240,
+                    width: 300
                   }}
                 >
                   <Typela/>
@@ -51,13 +53,18 @@ function DashboardContent() {
                 {/* Overview */}
               </Grid>
               {/* View_Request */}
-              <Grid item xs={12} md={4} lg={3} >
+              <Grid item 
+              //xs={12} 
+              //md={4} 
+              //lg={3} 
+              >
                 <Paper
                   sx={{
                     p: 2,
                     display: 'flex',
                     flexDirection: 'column',
                     height: 240,
+                    width: 300
                   }}
                 >
                   <Request />
@@ -71,6 +78,7 @@ function DashboardContent() {
                     display: 'flex',
                     flexDirection: 'column',
                     height: 240,
+                    width: 300
                   }}
                 >
                   <Summary />
@@ -78,7 +86,7 @@ function DashboardContent() {
               </Grid>
               {/* License List */}
               <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column', width:1270 }}>
                   <License />
                 </Paper>
               </Grid>

@@ -7,7 +7,7 @@ interface TitleProps {
 
 export default function Title(props: TitleProps) {
   return (
-    <Typography component="h2" variant="h6" color="primary" gutterBottom>
+    <Typography align="center" component="h2" variant="h6" color="primary" gutterBottom sx={{my: 3}}>
       {props.children}
     </Typography>
   );

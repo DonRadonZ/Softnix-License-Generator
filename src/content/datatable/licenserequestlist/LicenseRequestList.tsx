@@ -69,8 +69,12 @@ export default function License() {
  
   return (
     <React.Fragment>
-      <Paper sx={{ width: '100%', overflow: 'hidden' }}>
       <Title>License Request List</Title>
+      <Paper sx={{ width: '75%', 
+      overflow: 'hidden',
+        my: 10,
+        mx: 35}}>
+      
       <Table size="small">
         <TableHead>
           <TableRow>
