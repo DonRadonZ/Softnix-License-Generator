@@ -16,6 +16,7 @@ import InputLabel from '@mui/material/InputLabel';
 
 
 
+
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -29,6 +30,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { isStringObject } from 'util/types';
 //import isISODate from "is-iso-date";
 
 
@@ -241,7 +243,7 @@ const GeneratePage = () => {
 
     const[multi, setmulti] = React.useState<boolean>();
     const [error, setError] = React.useState(false);
-  const [helperText, setHelperText] = React.useState('');
+  const [helperText, setHelperText] = React.useState(''); 
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>{
       setmulti(event.target.checked);
@@ -477,7 +479,8 @@ const GeneratePage = () => {
           disablePast
           label="Expired Date"
           minDate={new Date()}
-          inputFormat = "yyyy/MM/dd hh:mm:ss"
+          ampm = {false}
+           inputFormat = 'yyyy-MM-dd HH:mm'
           renderInput={(params) => 
           <TextField {...params} 
           error={!!errors['expired']}
