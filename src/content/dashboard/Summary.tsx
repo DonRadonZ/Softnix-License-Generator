@@ -18,7 +18,7 @@ export default function Deposits() {
         Nearly Expire    1 License
       </Typography>
       <Typography component="p">
-        Expire           2 License
+        Expired           2 License
       </Typography>
       <Typography color="text.secondary" sx={{ flex: 1 }}>
         on 15 March, 2019
