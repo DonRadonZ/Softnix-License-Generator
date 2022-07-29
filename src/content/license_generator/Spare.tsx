@@ -121,8 +121,8 @@ const API = "http://192.168.10.170:3000/v1/api/slg";
     activate: string().nonempty('required to generate'),
     serial_type: string().nonempty('required to generate'),
     storage: z.enum(['20GB','50GB','100GB','200GB','500GB','1TB','2TB','5TB','UNLIMITED']),
-    expired: z.string().nonempty('required to generate'),
-    //expired: z.preprocess((a) => new Date(z.string().parse(a)), z.date()),
+    //expired: z.string().nonempty('required to generate'),
+    expired: z.preprocess((a) => new Date(z.string().parse(a)), z.date()),
     dashboard: string().nonempty('required to generate'),
     visualization: string().nonempty('required to generate'),
     multi_tenant: z.enum(['true', 'false'])
@@ -226,9 +226,21 @@ const GeneratePage = () => {
     //new Date(Date.UTC(2000,0,0,0,0,0)))
     new Date(),
     );
+    
   const ExpirehandleChange = (newValue: Date | null) => {
     setExpired(newValue);
   };
+
+  // const [expired, setExpired] = React.useState(
+  //   //new Date(Date.UTC(2000,0,0,0,0,0)))
+  //   ''
+  //   );
+    // const ExpirehandleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    //   setExpired(event.target.value);
+    //     // On autofill we get a stringified value.
+        
+  
+    // };
 
   const [Storage, setStorage] = React.useState('');
 
@@ -305,7 +317,7 @@ const GeneratePage = () => {
                                         activate:activate,
                                         serial_type:serial_type,
                                         storage:Storage,
-                                        expired:expired,
+                                        expired:"2023-12-18 11:09:21",
                                         dashboard:dashboard,
                                         visualization:visualization,
                                         multi_tenant:multi
@@ -479,7 +491,6 @@ const GeneratePage = () => {
           label="Expired Date"
           minDate={new Date()}
           ampm = {false}
-           inputFormat = 'yyyy-MM-dd HH:mm:ss'
           renderInput={(params) => 
           <TextField {...params} 
           error={!!errors['expired']}
@@ -488,6 +499,24 @@ const GeneratePage = () => {
           //helperText={errors['expired'] ? errors['expired'].message : ''}
           //error={!!errors['expired']}   
         /> 
+
+{/* <FormControl sx={{ mb: 2, width: 300 }}>
+  <TextField
+  {...register("expired")}
+    onChange={ExpirehandleChange}
+        value = {expired}
+        label="Expired Date"
+        type="datetime-local"
+        // ampm = {false}
+        sx={{ width: 250 }}
+        InputLabelProps={{
+          shrink: true,
+        }}
+        error={!!errors['expired']}
+          helperText={errors['expired'] ? errors['expired'].message : ''}
+      />
+      </FormControl> */}
+      
           </Stack>
           </LocalizationProvider>
           </FormControl>  
