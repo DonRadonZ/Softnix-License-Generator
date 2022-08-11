@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "styled-components";
-// import useHover from "foundations/hooks/useHover";
-// import { Icon, Icons, Title } from "foundations/components/presentation";
-// import { Avatar, AvatarVariants } from "foundations/components/chat";
-// import { StyledBox, ListItem } from "foundations/components/layout";
-// import { getUniqueColor, getInitials } from "foundations/utilities";
+// import useHover from "../../foundations/hooks/useHover";
+ import { Icon, Icons, Title } from "../../foundations/component/presentation/Index";
+import { Avatar, AvatarVariants } from "../../foundations/component/chat/avatar/avatar";
+// import { StyledBox, ListItem } from "../../foundations/component/layout/Index";
+// import { getUniqueColor, getInitials } from "../../foundations/utilities";
 
 
 // export interface UserFragment {
