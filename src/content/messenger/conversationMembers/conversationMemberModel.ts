@@ -9,15 +9,15 @@ export interface ConversationMembers {
     [conversationId: string]: string[];
 }
 
-// const getByConversationIdSlice = (state: AppState) => state.conversationMembers;
+const getByConversationIdSlice = (state: AppState) => state.conversationMembers;
 
-// export const getUserByConversationId = createSelector(
-//     [getByConversationIdSlice],
-//     (users: {byId: MembershipHash}) => {
-//         return users.byId;
-//     }
-// );
+export const getUserByConversationId = createSelector(
+    [getByConversationIdSlice],
+    (users: {byId: MembershipHash}) => {
+        return users.byId;
+    }
+);
 
-// const ConversationMembersStateReducer = createChannelMembersReducer();
+const ConversationMembersStateReducer = createChannelMembersReducer();
 
-// export {ConversationMembersStateReducer};
+export {ConversationMembersStateReducer};
