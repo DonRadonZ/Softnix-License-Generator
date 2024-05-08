@@ -26,6 +26,15 @@ development has slowed down due end time from Internship and want to gain more k
 * App needs a table view all Customer ID, Certificate ID, type, Storage and Expired
 * HR should be able to input form about license that need to collect
 
+## Screenshot
+
+![Dashboard](https://github.com/DonRadonZ/Softnix-License-Generator/assets/105053876/57920776-62cf-4fc5-8b31-f3d5bcbdfc42)
+
+![LicenseList](https://github.com/DonRadonZ/Softnix-License-Generator/assets/105053876/1d42ce29-b5df-409f-8f68-29b1512dadad)
+
+![GenerateForm1](https://github.com/DonRadonZ/Softnix-License-Generator/assets/105053876/f2dfd874-3310-4f84-9f1a-65b970c346cb)
+![GenerateForm2](https://github.com/DonRadonZ/Softnix-License-Generator/assets/105053876/129ebdfe-692a-420d-8ad8-f46cac022f7c)
+
 ## My Process
 
 ### Library
