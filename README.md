@@ -9,29 +9,44 @@ development has slowed down due end time from Internship and want to gain more k
 
 # Table of contents
 
-"*" Key Features
-"*" My process
-    ""*"" Library
-    ""*"" What I learned
-"*" Installation
-"*"
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
+* [Screenshots]
+* [Key Features](## Key-Features "Goto Key Features")
+* My process
+    * Library
+    * What I learned
+* Installation
+* Acknowledge
 
 ## Key Features
-"*" App need to have dashboard to show type license status
-"*" App needs a table view 
-"*" HR should be able to input form about license that need to collect
+* The initial app screen  should be dashboard, to display type license, most recent license, overall status license
+* App needs a table view all Customer ID, Certificate ID, type, Storage and Expired
+* HR should be able to input form about license that need to collect
 
-"*" The initial app screeh 
+
 
 
 ## Screenshot
 
+[Dashboard]("../../screenshot/Dashboard.jpg" "Dashboard")
+
+[License List]("../../screenshot/LicenseList.jpg" "License List")
+
+[Generate Form]("../../screenshot/GenerateForm1.jpg" "Generate Form")
+[Generate Form]("../../screenshot/GenerateForm2.jpg")
+
+## My Process
+
+### Library
+
+* React
+* Typescript
+* React-Router-Dom
+* React-Hook-Form
+* Axios
+* Material UI
+* Zod
+
+### What I learned
 
 ## Installation
 
@@ -59,20 +74,18 @@ npm run build or yarn run build
 npm start or yarn start
 ```
 
-
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
 ## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+- [] Login
+- [] Sign up
+- [x] Dashboard
+    -[] Display all data from list
+- [] Message
+- [x] License List
+- [] Generate Form
+    - [x] Form Validation
+    - [] Post Data
+- [] Audit Log
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
 
 ## Authors
 
@@ -85,7 +98,5 @@ You can also document commands to lint the code or run tests. These steps help t
 Feel free to contact me with any question or feedback
 
 ## Acknowledgements
-MIT
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+This app was developed as part of Internship Project at Softnix Technology Co. Ltd. Special thanks to company for great opportunity for learning and making a project.
