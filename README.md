@@ -9,7 +9,7 @@ development has slowed down due end time from Internship and want to gain more k
 
 # Table of contents
 
-* [Screenshots]
+* [Screenshots]()
 * [Key Features](## Key-Features "Goto Key Features")
 * My process
     * Library
@@ -23,16 +23,14 @@ development has slowed down due end time from Internship and want to gain more k
 * HR should be able to input form about license that need to collect
 
 
-
-
 ## Screenshot
 
-[Dashboard]("../../screenshot/Dashboard.jpg" "Dashboard")
+[Dashboard]("Dashboard.jpg" "Dashboard")
 
-[License List]("../../screenshot/LicenseList.jpg" "License List")
+[License List]("LicenseList.jpg" "License List")
 
-[Generate Form]("../../screenshot/GenerateForm1.jpg" "Generate Form")
-[Generate Form]("../../screenshot/GenerateForm2.jpg")
+[Generate Form]("GenerateForm1.jpg" "Generate Form")
+[Generate Form]("GenerateForm2.jpg")
 
 ## My Process
 
@@ -47,6 +45,16 @@ development has slowed down due end time from Internship and want to gain more k
 * Zod
 
 ### What I learned
+
+* **React Fundamentals** I gained knowledge about React from self-learning from beginning
+
+* **Form Handling** I learned about how to manage form using React Hook Form, simplifying form validation
+
+* **Material UI** I learned about how to use Material UI with this project to Design UI part
+
+* **How Frontend communicate to Backend** I learned about how to connect and send data between Frontend and Backend from API using axios
+
+* **Basic of Routing** React Router learn about how to connect between route with another screen
 
 ## Installation
 
@@ -75,25 +83,25 @@ npm start or yarn start
 ```
 
 ## Roadmap
-- [] Login
-- [] Sign up
+- [ ] Login
+- [ ] Sign up
 - [x] Dashboard
-    -[] Display all data from list
-- [] Message
+    - [ ] Display all data from list
+- [ ] Message
 - [x] License List
 - [] Generate Form
     - [x] Form Validation
-    - [] Post Data
-- [] Audit Log
+    - [ ] Post Data
+- [ ] Audit Log
 
 
 ## Authors
 
  **Supachai Sinkaseam**
 
- "*" LinkedIn - [@supachai-s-40650a104](https://www.linkedin.com/in/supachai-s-40650a104/)
- "*" Facebook - [@supachai.sinkraseam](https://www.facebook.com/supachai.sinkraseam)
- "*" Github - [@DonRadonZ](https://github.com/DonRadonZ)
+* LinkedIn - [@supachai-s-40650a104](https://www.linkedin.com/in/supachai-s-40650a104/)
+* Facebook - [@supachai.sinkraseam](https://www.facebook.com/supachai.sinkraseam)
+* Github - [@DonRadonZ](https://github.com/DonRadonZ)
 
 Feel free to contact me with any question or feedback
 
