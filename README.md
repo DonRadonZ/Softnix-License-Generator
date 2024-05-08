@@ -27,17 +27,16 @@ development has slowed down due end time from Internship and want to gain more k
 **Table of Contents**
 
 - [Softnix License Generator](#softnix-license-generator)
-  - [Project status](#project-status)
-- [Table of contents](#table-of-contents)
-  - [Key Features](#key-features)
-  - [Screenshot](#screenshot)
-  - [My Process](#my-process)
+- [Project status](#project-status)
+- [Key Features](#key-features)
+- [Screenshot](#screenshot)
+- [My Process](#my-process)
     - [Library](#library)
     - [What I learned](#what-i-learned)
-  - [Installation](#installation)
-  - [Roadmap](#roadmap)
-  - [Authors](#authors)
-  - [Acknowledgements](#acknowledgements)
+- [Installation](#installation)
+- [Roadmap](#roadmap)
+- [Authors](#authors)
+- [Acknowledgements](#acknowledgements)
 
 
 ## Key Features
