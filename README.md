@@ -5,17 +5,22 @@ Softnix License Generator app is a full-featured with React Application that all
 ## Project status
 
 development has slowed down due end time from Internship and want to gain more knowledge after that I will develop more. 
-   
 
-# Table of contents
+**Table of Contents**
 
-* [Screenshots]()
-* [Key Features](## Key-Features "Goto Key Features")
-* My process
-    * Library
-    * What I learned
-* Installation
-* Acknowledge
+- [Softnix License Generator](#softnix-license-generator)
+  - [Project status](#project-status)
+- [Table of contents](#table-of-contents)
+  - [Key Features](#key-features)
+  - [Screenshot](#screenshot)
+  - [My Process](#my-process)
+    - [Library](#library)
+    - [What I learned](#what-i-learned)
+  - [Installation](#installation)
+  - [Roadmap](#roadmap)
+  - [Authors](#authors)
+  - [Acknowledgements](#acknowledgements)
+
 
 ## Key Features
 * The initial app screen  should be dashboard, to display type license, most recent license, overall status license
