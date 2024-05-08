@@ -6,24 +6,6 @@ Softnix License Generator app is a full-featured with React Application that all
 
 development has slowed down due end time from Internship and want to gain more knowledge after that I will develop more. 
 
-
-**Table of Contents**
-
-- [Softnix License Generator](#softnix-license-generator)
-  - [Project status](#project-status)
-  - [Key Features](#key-features)
-  - [My Process](#my-process)
-    - [Library](#library)
-    - [What I learned](#what-i-learned)
-  - [Installation](#installation)
-  - [Roadmap](#roadmap)
-  - [Authors](#authors)
-  - [Acknowledgements](#acknowledgements)
-
-
-
-
-
 **Table of Contents**
 
 - [Softnix License Generator](#softnix-license-generator)
