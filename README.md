@@ -27,16 +27,6 @@ development has slowed down due end time from Internship and want to gain more k
 * App needs a table view all Customer ID, Certificate ID, type, Storage and Expired
 * HR should be able to input form about license that need to collect
 
-
-## Screenshot
-
-[Dashboard]("Dashboard.jpg" "Dashboard")
-
-[License List]("LicenseList.jpg" "License List")
-
-[Generate Form]("GenerateForm1.jpg" "Generate Form")
-[Generate Form]("GenerateForm2.jpg")
-
 ## My Process
 
 ### Library
@@ -63,25 +53,25 @@ development has slowed down due end time from Internship and want to gain more k
 
 ## Installation
 
-"*" Clone this repository:
+* Clone this repository:
 
 ```
 git clone https://github.com/DonRadonZ/Softnix-License-Generator.git
 ```
 
-"*" Install dependencies:
+* Install dependencies:
 
 ```
 npm install or yarn install
 ```
 
-"*" Build command:
+* Build command:
 
 ```
 npm run build or yarn run build
 ```
 
-"*" Live server:
+* Live server:
 
 ```
 npm start or yarn start
